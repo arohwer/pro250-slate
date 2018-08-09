@@ -8,6 +8,54 @@ body, button, html, input, select, textarea {
   line-height: 20px;
 }
 
+div {
+  display: flex;
+  flex: 1;
+}
+
+.darkblue-bg {
+  background-color: #2D3647;
+}
+
+.lightblue-bg {
+  background-color: #3CAFF0;
+}
+
+.lightgrey-bg {
+  background-color: #D2D7DF;
+}
+
+.green-bg {
+  background-color: #85D391;
+}
+
+.red-bg {
+  background-color: #D34A4C;
+}
+
+.darkblue-text {
+  color: #2D3647;
+}
+
+.lightblue-text {
+  color: #3CAFF0;
+}
+
+.lightgrey-text {
+  color: #D2D7DF;
+}
+
+.green-text {
+  color: #85D391;
+}
+
+.red-text {
+  color: #D34A4C;
+}
+
+.white-text {
+  color: #fff;
+}
 
 .newitem-title-wrapper {
   margin: 4px 10px;
