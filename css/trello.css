@@ -224,6 +224,16 @@ div {
   font-size: 1.3em;
 }
 
+#container {
+  margin-top: 5%;
+  margin: 20px;
+  flex-direction: row;
+}
+
+#board {
+  flex-direction: column;
+}
+
 .newitem-title-wrapper {
   margin: 4px 10px;
 }
