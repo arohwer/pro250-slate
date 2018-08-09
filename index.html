@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>SLATE</title>
     <link href="https://fonts.googleapis.com/css?family=Damion%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/trello.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/trello.css" />
 </head>
 
 <body>
-<div class="navigation-bar">
-    Trello
-</div>
-<div id="container"></div>
+    <header class="site-header">
+        <nav class="nav-color navbar-fixed-col">
+            <a id="dashboardLink" class="lightgrey-text" href="#">Dashboard</a>
+            <span class="lightgrey-text logo-span">
+                <img src="images/cross.png" class="img-logo nav-logo">
+                Slate
+            </span>
+            <ul class="nav-list">
+                <li id="addBoardLink">
+                    <a href="#">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </li>
+                <li id="chatLink">
+                    <a href="#">
+                        <i class="fas fa-comment-alt"></i>
+                    </a>
+                </li>
+                <li id="userLink">
+                    <a href="#">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<div id="container-main"></div>
+    <div id="container"></div>
 
-<div id="card-edit">
-    <div id="card-edit-close"><img src="images/cross.png"></div>
-    <form>
-        <div id="card-edit-inputs">
-            <div>
-                <label>Title:</label>
-                <input id="card-edit-title">
+    <div id="container-main"></div>
+
+    <div id="card-edit">
+        <div id="card-edit-close">
+            <img src="images/cross.png">
+        </div>
+        <form>
+            <div id="card-edit-inputs">
+                <div>
+                    <label>Title:</label>
+                    <input id="card-edit-title">
+                </div>
             </div>
-        </div>
-        <div>
-            <input id="card-edit-delete" type="button" value="Delete">
-            <input id="card-edit-submit" type="submit" value="Save">
-        </div>
-    </form>
-</div>
+            <div>
+                <input id="card-edit-delete" type="button" value="Delete">
+                <input id="card-edit-submit" type="submit" value="Save">
+            </div>
+        </form>
+    </div>
 
-<script type="text/javascript" src="js/card-delete.js"></script>
-<script type="text/javascript" src="js/card-edit.js"></script>
-<script type="text/javascript" src="js/add-card.js"></script>
-<script type="text/javascript" src="js/list-title-form.js"></script>
-<script type="text/javascript" src="js/card-title-form.js"></script>
-<script type="text/javascript" src="js/card.js"></script>
-<script type="text/javascript" src="js/list.js"></script>
-<script type="text/javascript" src="js/add-list.js"></script>
-<script type="text/javascript" src="js/trello-main.js"></script>
+    <script type="text/javascript" src="js/card-delete.js"></script>
+    <script type="text/javascript" src="js/card-edit.js"></script>
+    <script type="text/javascript" src="js/add-card.js"></script>
+    <script type="text/javascript" src="js/list-title-form.js"></script>
+    <script type="text/javascript" src="js/card-title-form.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+    <script type="text/javascript" src="js/add-list.js"></script>
+    <script type="text/javascript" src="js/trello-main.js"></script>
 
 </body>
+
 </html>
