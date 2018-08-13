@@ -1,4 +1,7 @@
-(function () {
+var boards = [];
+
+function displayBoard(id) {
+	//use id to find correct board to display
 	'use strict'
 
 	//Board constructor object and assign some properties to its prototype
@@ -38,11 +41,10 @@
 	}
 
 	Board.prototype.registerCard = function (card, index) {
-		this.cards[card.id] =
-		{
-			card: card
-			, list: card.list
-			, index: index
+		this.cards[card.id] = {
+			card: card,
+			list: card.list,
+			index: index
 		}
 	}
 
@@ -75,11 +77,42 @@
 
 	//Onloading the document render the board.The code starts from here
 	document.body.onload = function () {
-		var title = 'Add New Board'
-			, board = new Board(title)
+		var title = this.title,
+			board = new Board(title)
 
 		board.render()
 		document.getElementById('container').appendChild(board.node)
 		currentBoard = board
 	}
-}())
+}
+
+function displayDash(boards) {
+	function Dashboard(boards) {
+		this.boards = boards;
+
+		this.node = document.createElement("div");
+		//create nodes to represent html elements
+		//build form (board-title-form) for adding new boards
+		//add click event to each board to direct to board w/ board id
+	}
+
+	Dashboard.prototype.render = function () {
+		console.log(this.boards);
+		if (this.boards == null || this.boards == undefined || this.boards.length == 0) {
+			console.log("boards in undefined");
+			this.node.innerHTML = "no boards to display";
+		} else {
+			//fill div with boards
+		}
+	}
+
+	document.body.onload = function () {
+		//pass in list of boards
+		//var boards = [];
+		var dash = new Dashboard(boards);
+		dash.render();
+		document.getElementById('container').appendChild(dash.node);
+	}
+}
+
+displayDash(boards);

@@ -1,0 +1,3 @@
+/*
+This function will build the form for adding a new board
+ */
