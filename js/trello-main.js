@@ -1,8 +1,8 @@
 var boards = [];
 
-function displayBoard(id) {
+function displayBoard() {
 	//use id to find correct board to display
-
+	var id = this.id;
 	//Onloading the document render the board.The code starts from here
 	document.body.onload = function () {
 		for (let i = 0; i < boards.length; i++) {
@@ -20,12 +20,12 @@ function displayBoard(id) {
 }
 
 function displayDash(boards) {
+	
 	function Dashboard(boards) {
 		this.boards = boards;
 
 		this.node = document.createElement("div");
 		this.dashGrid = buildDashboardContainer(boards);
-		//add click event to each board to direct to board w/ board id
 	}
 
 	Dashboard.prototype.render = function () {
@@ -47,14 +47,30 @@ function displayDash(boards) {
 	//document.getElementById("addBoardLink").onclick = addBoard;
 	//add event listener to dynamically created button too
 
+	//click event for boards
+	if (this.boards.length > 0) {
+		var boards = document.getElementsByClassName("boards");
+		for (let i = 0; i < boards.length; i++) {
+			boards[i].addEventListener('click', displayBoard);
+			
+		}
+	}
+
 	document.body.onload = function () {
 		//pass in list of boards
-		//var boards = [];
 		var dashboard = new Dashboard(boards);
 		dashboard.render();
-		document.getElementById('container').appendChild(dash.node);
+		document.getElementById('container').appendChild(dashboard.node);
 		dash = dashboard;
 	}
 }
+
+function load() {
+	displayDash(boards);
+}
+
+var logoBtn = document.getElementById("logo");
+logoBtn.addEventListener('click', load);
+
 
 displayDash(boards);

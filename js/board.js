@@ -1,25 +1,25 @@
 	//Board constructor object and assign some properties to its prototype
 	function Board(title) {
-		var nextId = 0
+		var nextId = 0;
 
-		this.title = title
-		this.lists = []
-		this.cards = {}
+		this.title = title;
+		this.lists = [];
+		this.cards = {};
 
-		this.node = document.createElement('div')
-		this.titleNode = document.createElement('div')
-		this.listsNode = document.createElement('div')
+		this.node = document.createElement('div');
+		this.titleNode = document.createElement('div');
+		this.listsNode = document.createElement('div');
 
-
-		this.titleNode.id = 'trello-title-board'
-		this.listsNode.id = 'trello-canvas-board'
+		this.node.className = "boards";
+		this.titleNode.id = 'trello-title-board';
+		this.listsNode.id = 'trello-canvas-board';
 
 		// new list title form
-		this.titleFormNode = buildListTitleForm()
-		this.titleNode.appendChild(document.createTextNode(this.title))
+		this.titleFormNode = buildListTitleForm();
+		this.titleNode.appendChild(document.createTextNode(this.title));
 
 		this.getNextId = function () {
-			return '_' + (nextId++).toString()
+			return '_' + (nextId++).toString();
 		}
 
 		this.id = getNextId();
