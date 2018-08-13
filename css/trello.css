@@ -51,7 +51,54 @@ html {
   background-color: #2D3647;
 }
 
-/* body, button, html, input, select, textarea {
+body {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2.8em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.8em;
+}
+
+h5 {
+  font-size: 1.5em;
+}
+
+h6 {
+  font-size: 1.3em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Damion', cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+body,
+button,
+html,
+input,
+select,
+textarea {
   color: #4d4d4d;
   font: 14px "Helvetica Neue", Helvetica, sans-serif;
   line-height: 20px;
