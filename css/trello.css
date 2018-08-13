@@ -99,11 +99,10 @@ html,
 input,
 select,
 textarea {
-/* body, button, html, input, select, textarea {
   color: #4d4d4d;
   font: 14px "Helvetica Neue", Helvetica, sans-serif;
   line-height: 20px;
-} */
+}
 
 div {
   display: flex;
@@ -195,7 +194,7 @@ div {
 }
 
 .nav-color {
-  background-color: #2D3647;
+  background-color: #3CAFF0;
 }
 
 .nav-color ul li a:link {
