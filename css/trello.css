@@ -48,61 +48,14 @@ table {
 }
 
 html {
-  background-color: #0079BF;
+  background-color: #2D3647;
 }
 
-body {
-  font-family: 'Lato', sans-serif;
-  display: flex;
-  flex-direction: column;
-}
-
-h1 {
-  font-size: 2.8em;
-}
-
-h2 {
-  font-size: 2.5em;
-}
-
-h3 {
-  font-size: 2em;
-}
-
-h4 {
-  font-size: 1.8em;
-}
-
-h5 {
-  font-size: 1.5em;
-}
-
-h6 {
-  font-size: 1.3em;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Damion', cursive;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-body,
-button,
-html,
-input,
-select,
-textarea {
+/* body, button, html, input, select, textarea {
   color: #4d4d4d;
   font: 14px "Helvetica Neue", Helvetica, sans-serif;
   line-height: 20px;
-}
+} */
 
 div {
   display: flex;
@@ -422,3 +375,80 @@ div {
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+
+.homeContainer{
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+#logo-display{
+  text-align:center;
+  font-family: 'Damion', cursive;
+  color: #3caff0;
+  font-size: 20vw;
+  margin:0;
+  margin-top:5%;
+}
+
+#logo-slogan{
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  text-align: center;
+  margin-top: -60px;
+  margin-bottom:7%;
+  font-size: 3vw;
+  
+}
+
+.startBtn {
+  margin:auto;
+  font-size:18px;
+  letter-spacing:2px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  color:#3CAFF0;
+  text-transform:uppercase;
+  display:inline-block;
+  text-align:center;
+  width:270px;
+  padding:14px 0px;
+  border:3px solid #3CAFF0;
+  border-radius:2px;
+  position:relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);
+}
+    .startBtn:before{
+      -webkit-transition:0.5s all ease;
+      transition:0.5s all ease;
+      position:absolute;
+      top:0;
+      left:50%;
+      right:50%;
+      bottom:0;
+      opacity:0;
+      content:'';
+      background-color:#3CAFF0;
+      z-index:-2;
+    }
+
+    .startBtn:hover:before{
+      -webkit-transition:0.5s all ease;
+      transition:0.5s all ease;
+      left:0;
+      right:0;
+      opacity:1;
+    }
+
+    .startBtn:focus:before{
+      transition:0.5s all ease;
+      left:0;
+      right:0;
+      opacity:1;     
+    }
+
+    .startBtn:hover, .startBtn:focus{
+      color:white; 
+      cursor: pointer;
+    }
