@@ -1,3 +1,17 @@
+var boards = new Array();
+// var testBoard = new Board("Test");
+// testBoard.title = "Test";
+// boards[0] = testBoard;
+
+
+function addNewBoard(){
+	var newBoard = new Board("Board");
+	newBoard.title = "Title 1";
+	boards.push(newBoard);
+	console.log("BOARDS: ", boards);
+	displayDash(boards);
+}
+
 
 function displayBoard() {
 	//use id to find correct board to display
@@ -55,20 +69,29 @@ function displayDash(boards) {
 		}
 	}
 
+
+
 	document.body.onload = function () {
 		//pass in list of boards
 		var dashboard = new Dashboard(this.boards);
 		dashboard.render();
 		document.getElementById('container').appendChild(dashboard.node);
 		dash = dashboard;
+		console.log("DASH INIT")
+		var addBoardBtn = document.getElementById('addBoardBtn');
+		addBoardBtn.addEventListener('click', addNewBoard);
 	}
+
+
 }
 
-var boards = [];
-var testBoard = new Board("Test");
-testBoard.title = "Test";
-boards[0] = testBoard;
+
 displayDash(boards);
+
+
+function initDashboard(){
+	
+}
 
 function load() {
 	displayDash(boards);
