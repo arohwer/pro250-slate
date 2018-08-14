@@ -505,4 +505,5 @@ div {
 
 .img-logo{
   max-width: 28px;
+  cursor: pointer;
 }
