@@ -507,10 +507,6 @@ textarea {
       cursor: pointer;
     }
 
-.img-logo{
-  max-width: 28px;
-  cursor: pointer;
-}
 
   /*DASHBOARD CSS*/
 
@@ -557,3 +553,7 @@ textarea {
   .fa-pencil-alt:hover{
     color:rgba(255, 255, 255, 0.735);
   }
+.img-logo{
+  max-width: 28px;
+  cursor: pointer;
+}
