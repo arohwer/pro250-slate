@@ -16,7 +16,7 @@ function buildDashboardContainer(boards) {
         node.innerHTML +=
             '<div class="boardBox">' +
             '<i class="fas fa-pencil-alt"></i>' +
-            `<h6 class="boardName">${boards[board].title}</h6>`
+            `<h6 id="board_${boards[board].id}" class="boardName boards">${boards[board].title}</h6>`
         '</div>'
     }
     // node.style.display = 'none'
