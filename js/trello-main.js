@@ -1,4 +1,3 @@
-var boards = [];
 
 function displayBoard() {
 	//use id to find correct board to display
@@ -23,9 +22,9 @@ function displayDash(boards) {
 	
 	function Dashboard(boards) {
 		this.boards = boards;
-
+		console.log(this.boards);
 		this.node = document.createElement("div");
-		this.dashGrid = buildDashboardContainer(boards);
+		this.dashGrid = buildDashboardContainer(this.boards);
 	}
 
 	Dashboard.prototype.render = function () {
@@ -49,16 +48,16 @@ function displayDash(boards) {
 
 	//click event for boards
 	if (this.boards.length > 0) {
-		var boards = document.getElementsByClassName("boards");
-		for (let i = 0; i < boards.length; i++) {
-			boards[i].addEventListener('click', displayBoard);
+		var boardList = document.getElementsByClassName("boards");
+		for (let i = 0; i < boardList.length; i++) {
+			boardList[i].addEventListener('click', displayBoard);
 			
 		}
 	}
 
 	document.body.onload = function () {
 		//pass in list of boards
-		var dashboard = new Dashboard(boards);
+		var dashboard = new Dashboard(this.boards);
 		dashboard.render();
 		document.getElementById('container').appendChild(dashboard.node);
 		dash = dashboard;
@@ -72,5 +71,7 @@ function load() {
 var logoBtn = document.getElementById("logo");
 logoBtn.addEventListener('click', load);
 
-
+var boards = [];
+var testBoard = new Board("Test");
+boards[0] = testBoard;
 displayDash(boards);
