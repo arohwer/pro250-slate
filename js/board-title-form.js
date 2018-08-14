@@ -8,7 +8,7 @@ function buildDashboardContainer(boards) {
     node.innerHTML +=
         '<div class="boardBox" id="addBoardBtn">' +
         '<h6 class="boardNew">Add Board</h6>' +
-        '<i class="fas fa-plus-circle"></i>' +
+        '<i class="fas fa-plus-circle" id="editBoardBtn"></i>' +
         '</div>'
     for (board in boards) {
         // console.log("BOARD", boards[board]);
