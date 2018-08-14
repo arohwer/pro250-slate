@@ -21,3 +21,7 @@
 	Dashboard.prototype.unregisterBoard = function (board) {
 		delete this.boards[board.id]
 	}
+
+
+
+

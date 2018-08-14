@@ -7,6 +7,10 @@ function addNewBoard() {
 	displayDash(boards);
 }
 
+function newBoardModal(){
+
+}
+
 
 function displayBoard() {
 	var id = this.id;
@@ -46,9 +50,32 @@ function displayDash(boards) {
 
 displayDash(boards);
 
+
+
+//EVENT LISTENERS
+
+var logoBtn = document.getElementById("logo");
+logoBtn.addEventListener('click', load);
+
 function load() {
 	displayDash(boards);
 }
 
-var logoBtn = document.getElementById("logo");
-logoBtn.addEventListener('click', load);
+//ADD NEW BOARD MODAL
+var modal = document.getElementById('myModal');
+
+var span = document.getElementsByClassName("close")[0];
+
+addBoardBtn.onclick = function() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
