@@ -5,7 +5,12 @@ This function will build the form for adding a new board
 function buildDashboardContainer(boards) {
     var node = document.createElement('div');
     node.setAttribute("class", "boardGrid");
-    for (board in boards) {
+    node.innerHTML +=
+        '<div class="boardBox">' +
+        '<h6 class="boardNew">Add Board</h6>' +
+        '<i class="fas fa-plus-circle"></i>' +
+        '</div>'
+    for (board in boards){
         node.innerHTML +=
             '<div class="boardBox">' +
             '<i class="fas fa-pencil-alt"></i>' +

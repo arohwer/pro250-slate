@@ -507,6 +507,10 @@ textarea {
       cursor: pointer;
     }
 
+.img-logo{
+  max-width: 28px;
+  cursor: pointer;
+}
 
   /*DASHBOARD CSS*/
 
@@ -523,6 +527,14 @@ textarea {
     font-weight:600;
     vertical-align: middle;
     line-height: 180px;
+  }
+  
+  .boardNew{
+    color:white;
+    font-family: 'Lato', sans-serif;
+    font-weight:600;
+    margin:20px;
+    opacity:0.8;
   }
 
   .boardBox{
@@ -553,7 +565,9 @@ textarea {
   .fa-pencil-alt:hover{
     color:rgba(255, 255, 255, 0.735);
   }
-.img-logo{
-  max-width: 28px;
-  cursor: pointer;
-}
+
+  .fa-plus-circle{
+    color:white;
+    font-size:60px;
+    opacity:0.7;
+  }
