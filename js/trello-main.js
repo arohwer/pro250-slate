@@ -1,3 +1,16 @@
+var boards = new Array();
+// var testBoard = new Board("Test");
+// testBoard.title = "Test";
+// boards[0] = testBoard;
+
+
+function addNewBoard(){
+	var newBoard = new Board("Board");
+	newBoard.title = "Title 1";
+	boards.push(newBoard);
+	console.log("BOARDS: ", boards);
+	displayDash(boards);
+}
 
 
 function displayBoard() {
@@ -66,7 +79,12 @@ function displayDash(boards) {
 				console.log("adding click events");
 			}
 		}
+		console.log("DASH INIT")
+		var addBoardBtn = document.getElementById('addBoardBtn');
+		addBoardBtn.addEventListener('click', addNewBoard);
 	}
+
+
 }
 
 var boards = new Array();
@@ -74,6 +92,11 @@ var testBoard = new Board("Test");
 testBoard.title = "Test";
 boards.push(testBoard);
 displayDash(boards);
+
+
+function initDashboard(){
+	
+}
 
 function load() {
 	displayDash(boards);

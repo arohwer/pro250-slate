@@ -6,7 +6,7 @@ function buildDashboardContainer(boards) {
     var node = document.createElement('div');
     node.setAttribute("class", "boardGrid");
     node.innerHTML +=
-        '<div class="boardBox">' +
+        '<div class="boardBox" id="addBoardBtn">' +
         '<h6 class="boardNew">Add Board</h6>' +
         '<i class="fas fa-plus-circle"></i>' +
         '</div>'
