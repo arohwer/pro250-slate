@@ -64,14 +64,15 @@ function displayDash(boards) {
 	}
 }
 
+var boards = [];
+var testBoard = new Board("Test");
+testBoard.title = "Test";
+boards[0] = testBoard;
+displayDash(boards);
+
 function load() {
 	displayDash(boards);
 }
 
 var logoBtn = document.getElementById("logo");
 logoBtn.addEventListener('click', load);
-
-var boards = [];
-var testBoard = new Board("Test");
-boards[0] = testBoard;
-displayDash(boards);
