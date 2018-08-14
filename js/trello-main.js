@@ -41,38 +41,14 @@ function displayBoard() {
 }
 
 function displayDash(boards) {
-
-	function Dashboard(boards) {
-		this.boards = boards;
-		console.log(this.boards);
-		this.node = document.createElement("div");
-		this.dashGrid = buildDashboardContainer(this.boards);
-	}
-
-	Dashboard.prototype.render = function () {
-		console.log(this.boards);
-		this.node.appendChild(this.dashGrid);
-	}
-
-	Dashboard.prototype.registerBoard = function (board, index) {
-		this.boards[board.id] = {
-			board: board,
-			index: index
-		}
-	}
-
-	Dashboard.prototype.unregisterBoard = function (board) {
-		delete this.boards[board.id]
-	}
-
-	document.body.onload = function () {
 		//pass in list of boards
-		var dashboard = new Dashboard(this.boards);
+		var dashboard = new Dashboard(boards);
 		dashboard.render();
+		document.getElementById('container').innerHTML = '';
 		document.getElementById('container').appendChild(dashboard.node);
 		dash = dashboard;
 		//click event for boards
-		if (this.boards.length > 0) {
+		if (boards.length > 0) {
 			var boardList = document.getElementsByClassName("boards");
 			for (let i = 0; i < boardList.length; i++) {
 				boardList[i].addEventListener('click', displayBoard);
@@ -82,15 +58,12 @@ function displayDash(boards) {
 		console.log("DASH INIT")
 		var addBoardBtn = document.getElementById('addBoardBtn');
 		addBoardBtn.addEventListener('click', addNewBoard);
-	}
-
-
 }
 
-var boards = new Array();
-var testBoard = new Board("Test");
-testBoard.title = "Test";
-boards.push(testBoard);
+// var boards = new Array();
+// var testBoard = new Board("Test");
+// testBoard.title = "Test";
+// boards.push(testBoard);
 displayDash(boards);
 
 
