@@ -2,7 +2,7 @@
 This function will build the form for adding a new board
  */
 
-function buildDashboardContainer() {
+function buildDashboardContainer(boards) {
     var node = document.createElement('div');
     node.setAttribute("class", "boardGrid");
     node.innerHTML +=
@@ -10,13 +10,15 @@ function buildDashboardContainer() {
         '<h6 class="boardNew">Add Board</h6>' +
         '<i class="fas fa-plus-circle"></i>' +
         '</div>'
-    for (board in boards){
+    for (board in boards) {
+        // console.log("BOARD", boards[board]);
+        // console.log("TITLE", board.title);
         node.innerHTML +=
-		'<div class="boardBox">' +
-        '<i class="fas fa-pencil-alt"></i>'+
-        `<h6 class="boardName">${board.title}</h6>`
-		'</div>'
+            '<div class="boardBox">' +
+            '<i class="fas fa-pencil-alt"></i>' +
+            `<h6 class="boardName">${boards[board].title}</h6>`
+        '</div>'
     }
-	// node.style.display = 'none'
-	return node
+    // node.style.display = 'none'
+    return node;
 }

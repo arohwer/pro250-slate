@@ -22,7 +22,7 @@
 			return '_' + (nextId++).toString();
 		}
 
-		this.id = getNextId();
+		this.id = this.getNextId();
 
 		this.node.id = 'board_' + this.id;
 	}
