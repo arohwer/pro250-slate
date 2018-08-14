@@ -1,10 +1,10 @@
 var boards = new Array();
 
 function addNewBoard() {
-	var newBoard = new Board("Title 1");
-	boards.push(newBoard);
-	//console.log("BOARDS: ", boards);
-	displayDash(boards);
+	// var newBoard = new Board("Title 1");
+	// boards.push(newBoard);
+	// //console.log("BOARDS: ", boards);
+	// displayDash(boards);
 }
 
 function newBoardModal(){
