@@ -507,6 +507,10 @@ textarea {
       cursor: pointer;
     }
 
+.img-logo{
+  max-width: 28px;
+  cursor: pointer;
+}
 
   /*DASHBOARD CSS*/
 
