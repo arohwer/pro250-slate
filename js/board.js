@@ -23,8 +23,9 @@
 		}
 
 		this.id = this.getNextId();
+		console.log("BOARD ID", this.id);
 
-		this.node.id = 'board_' + this.id;
+		this.node.id = 'board' + this.id;
 	}
 
 	Board.prototype.render = function () {
