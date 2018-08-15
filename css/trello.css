@@ -628,3 +628,12 @@ textarea {
   display: flex;
 }
 
+.no-bg:hover{
+  background: rgb(181, 64, 66);
+}
+
+.yes-bg:hover{
+  background-color: rgb(121, 191, 132);
+
+}
+
