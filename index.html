@@ -45,21 +45,28 @@
     <div id="container-main"></div>
 
     <div id="card-edit">
-        <div id="card-edit-close">
-            <img src="images/cross.png">
-        </div>
-        <form>
+        <h3 class="modal-title-card">Card Edit</h3>
+        <div onclick="close()" id="card-edit-close">&#10006;</div>
+        <form class="modal-form">
             <div id="card-edit-inputs">
                 <div>
                     <label>Title:</label>
-                    <input id="card-edit-title">
+                    <input id="card-edit-title" class="card-textbox">
+                </div>
+                <div>
+                    <label>Due Date:</label>
+                    <input type="date" id="card-edit-date" class="card-textbox">
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <textarea name="card-edit-desc" class="desc-box" id="card-edit-desc" rows="3" class="card-textbox"></textarea>
                 </div>
             </div>
-            <div>
-                <input id="card-edit-delete" type="button" value="Delete">
-                <input id="card-edit-submit" type="submit" value="Save">
-            </div>
         </form>
+        <div class="button-box-card">
+            <div id="card-edit-delete" class="red-bg no-bg">Delete</div>
+            <div id="card-edit-submit" class="green-bg yes-bg">Save</div>
+        </div>
     </div>
 
     <div id="myModal" class="modal">
