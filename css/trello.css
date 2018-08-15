@@ -640,15 +640,8 @@ textarea {
 .card-textbox{
   min-width: 360px;
   max-width: 360px;
-  max-height: 250px;
+  max-height: 270px;
   min-height: 20px;
-}
-
-.desc-box {
-  min-height: 50px;
-  max-height: 50px;
-  min-width: 360px;
-  max-width: 360px;
 }
 
 .modal-title-card{
