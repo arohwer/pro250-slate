@@ -507,6 +507,10 @@ textarea {
       cursor: pointer;
     }
 
+.img-logo{
+  max-width: 28px;
+  cursor: pointer;
+}
 
   /*DASHBOARD CSS*/
 
@@ -523,6 +527,14 @@ textarea {
     font-weight:600;
     vertical-align: middle;
     line-height: 180px;
+  }
+  
+  .boardNew{
+    color:white;
+    font-family: 'Lato', sans-serif;
+    font-weight:600;
+    margin:20px;
+    opacity:0.8;
   }
 
   .boardBox{
@@ -553,7 +565,66 @@ textarea {
   .fa-pencil-alt:hover{
     color:rgba(255, 255, 255, 0.735);
   }
-.img-logo{
-  max-width: 28px;
-  cursor: pointer;
+
+  .fa-plus-circle{
+    color:white;
+    font-size:60px;
+    opacity:0.7;
+  }
+
+  /*MODAL*/
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(45, 54, 71, 0.625); /* Fallback color */
 }
+.modal-title{
+  text-align: center;
+  color: #3CAFF0;
+  margin-top:20px;
+}
+/* Modal Content */
+.modal-content {
+  background-color: #D2D7Df;
+  margin: auto;
+  /* padding: 20px; */
+  border: 1px solid #2D3647;
+  width: 30%;
+  border-radius:5px;
+  text-align:center;
+}
+
+.modal-btn{
+  width:50%;
+  line-height:40px;
+  color:white;
+  cursor:pointer;
+}
+
+#boardTitleText{
+  text-align: center;
+  width: 250px;
+  height: 25px;
+  margin: 20px;
+  font-size: 20px;
+  color: #2D3647;
+  border: none;
+  border-radius: 5px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.button-box{
+  height: 40px;
+  border-radius: 5px;
+  flex-direction: row;
+  display: flex;
+}
+
