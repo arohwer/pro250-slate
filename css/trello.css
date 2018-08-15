@@ -279,11 +279,18 @@ textarea {
 }
 
 .list-title {
-  min-height: 19px;
+  box-sizing: border-box;
+  min-height: 30px;
   padding: 8px 34px 8px 10px;
   font-size: 15px;
   line-height: 18px;
   font-weight: bold;
+}
+
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+border:none;
+outline:none;
 }
 
 .list-cards {
