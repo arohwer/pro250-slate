@@ -11,10 +11,11 @@ function addListTrello(board) {
 		var currentList;
 
 		var added = false;
+
 		function addList(evt) {
 			evt.preventDefault();
 			var title = titleInput.innerHTML.trim(),
-			index = board.lists.length - 1;
+				index = board.lists.length - 1;
 			board.titleFormNode.style.display = 'none';
 			titleInput.value = '';
 			if (!title) {
@@ -27,10 +28,15 @@ function addListTrello(board) {
 		}
 
 		titleInput.addEventListener("input", addList);
+		titleInput.addEventListener("keypress", function (evt) {
+			if (evt.which === 13) {
+				evt.preventDefault();
+			}
+		});
 
 		//board.titleFormNode.style.display = 'block'
 		//titleInput.focus();
-		
+
 		function focusOut(evt) {
 			console.log('FOCUS OUT', added);
 			if (added === true) {
