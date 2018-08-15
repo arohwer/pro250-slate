@@ -16,7 +16,7 @@ function List(board, title, index, dummyList) {
 	this.node.appendChild(this.titleNode)
 
 	if (!dummyList) {
-		var dummyCard = new Card(this, 'Add a card...', 0)
+		var dummyCard = new Card(this, '+ Add card', 0)
 
 		this.titleNode.draggable = true
 		

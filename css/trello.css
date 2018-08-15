@@ -93,6 +93,10 @@ a:hover {
   text-decoration: none;
 }
 
+textarea {
+  font-family: 'Lato', sans-serif; 
+}
+
 /* body,
 button,
 html,
