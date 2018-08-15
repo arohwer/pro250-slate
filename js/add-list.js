@@ -34,6 +34,7 @@ function addListTrello(board) {
 		function focusOut(evt) {
 			console.log('FOCUS OUT', added);
 			if (added === true) {
+				titleInput.textContent = '+ Add list';
 				currentList = new List(board, listContent, listIndex);
 				board.lists.splice(listIndex, 0, currentList);
 				board.listsNode.insertBefore(currentList.node,

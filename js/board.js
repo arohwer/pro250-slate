@@ -29,7 +29,7 @@
 	Board.prototype.render = function () {
 		console.log("LISTS", this.lists);
 		if (this.lists.length === 0) {
-			this.lists.push(new List(this, 'Add a list...', 0, true))
+			this.lists.push(new List(this, '+ Add list', 0, true))
 		}
 		for (var i = 0; i < this.lists.length; ++i) {
 			this.listsNode.appendChild(this.lists[i].node)
