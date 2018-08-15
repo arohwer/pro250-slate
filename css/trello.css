@@ -625,7 +625,7 @@ textarea {
   height: 40px;
   border-radius: 5px;
   flex-direction: row;
-  display: flex;
+  display: flex; 
 }
 
 .no-bg:hover{
@@ -635,5 +635,49 @@ textarea {
 .yes-bg:hover{
   background-color: rgb(121, 191, 132);
 
+}
+
+.card-textbox{
+  min-width: 360px;
+  max-width: 360px;
+  max-height: 270px;
+  min-height: 20px;
+}
+
+.modal-title-card{
+  padding-bottom: 40px;
+  text-align: center;
+  padding: 30px 50px;
+  font-family: 'Damion', sans-serif;
+  color: #3CAFF0;
+  user-select: none;
+}
+
+#card-edit-inputs {
+  padding-bottom: 20px;
+}
+
+#card-edit-close {
+  font-size: 20px;
+  user-select: none;
+}
+
+#card-edit-close:hover{
+  color: #5f5f5f;
+}
+
+.button-box-card{
+  width: 600px;
+  height: 60px;
+  margin-bottom: 0 !important;
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+}
+
+.modal-form {
+  padding-left: 40px;
+  padding-right: 40px;
+  user-select: none;
 }
 
