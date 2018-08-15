@@ -642,6 +642,8 @@ textarea {
   max-width: 360px;
   max-height: 270px;
   min-height: 20px;
+  font-family: 'Lato', sans-serif;
+
 }
 
 .modal-title-card{
@@ -681,3 +683,10 @@ textarea {
   user-select: none;
 }
 
+.desc-box {
+  min-width: 360px;
+  max-width: 360px;
+  min-height: 50px;
+  max-height: 50px;
+  font-family: 'Lato', sans-serif;  
+}
