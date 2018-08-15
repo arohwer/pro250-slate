@@ -16,7 +16,7 @@ cancel.onclick = function() {
 function addNewBoard(){
 	console.log("TITLE: ", boardTitleText.value);
 	if(boardTitleText.value != null && boardTitleText.value != ""){
-		var newBoard = new Board("SlateBoard");
+		var newBoard = new Board(boardTitleText.value);
 		newBoard.title = boardTitleText.value;
 		boards.push(newBoard);
 		displayDash(boards);
