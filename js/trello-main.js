@@ -81,7 +81,7 @@ function load() {
 	displayDash(boards);
 }
 
-//ADD NEW BOARD MODAL
+// ADD NEW BOARD MODAL
 var modal = document.getElementById('myModal');
 
 var span = document.getElementsByClassName("close")[0];
