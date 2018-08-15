@@ -6,7 +6,7 @@ var boards = new Array();
 // ADD NEW BOARD MODAL
 var modal = document.getElementById('myModal');
 var cancel = document.getElementById('cancel');
-var boardTitleText = document.getElementById('boardTitleText').value;
+var boardTitleText = document.getElementById('boardTitleText');
 
 
 
@@ -17,12 +17,13 @@ cancel.onclick = function() {
 
 
 function addNewBoard(){
-	console.log("TITLE: ", boardTitleText)
-	// var newBoard = new Board("SlateBoard");
-	// newBoard.title = "Title 1";
-	// boards.push(newBoard);
-	// console.log("BOARDS: ", boards);
-	// displayDash(boards);
+	console.log("TITLE: ", boardTitleText.value);
+	if(boardTitleText.value != null && boardTitleText.value != ""){
+		var newBoard = new Board("SlateBoard");
+		newBoard.title = boardTitleText.value;
+		boards.push(newBoard);
+		displayDash(boards);
+	}
 	modal.style.display='none';
 }
 
@@ -75,7 +76,6 @@ function displayDash(boards) {
 		}
 		console.log("DASH INIT")
 		var addBoardBtn = document.getElementById('addBoardBtn');
-		addBoardBtn.addEventListener('click', addNewBoard);
 }
 
 displayDash(boards);
