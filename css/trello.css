@@ -226,6 +226,20 @@ textarea {
 #dashboardLink {
   font-family: 'Lato', sans-serif;
   font-size: 1.3em;
+  cursor: pointer;
+}
+
+#dashboardIcon {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#dashboardLink:hover {
+  color: #fff;
+}
+
+#dashboardIcon:hover {
+  color: #fff;
 }
 
 #container {
