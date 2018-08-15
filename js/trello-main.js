@@ -1,7 +1,4 @@
 var boards = new Array();
-// var testBoard = new Board("Test");
-// testBoard.title = "Test";
-// boards[0] = testBoard;
 
 // ADD NEW BOARD MODAL
 var modal = document.getElementById('myModal');
@@ -33,27 +30,18 @@ function newBoardModal(){
 
 
 function displayBoard() {
-	//use id to find correct board to display
 	var id = this.id;
-	console.log("BOARD CLICKED", id);
 	var boardId = id.toString().split("_");
-	console.log("split", boardId[2]);
-	console.log("BOARDS", dash.boards);
-	//Onloading the document render the board.The code starts from here
-
 		for (let i = 0; i < dash.boards.length; i++) {
 			//get the board from boards that was clicked given the nodeid
 			var boardListId = boards[i].id.toString().split("_");
-			console.log("BOARD ID", boardListId);
 			if (boardListId[1] == boardId[2]) {
-				console.log("board match");
-				//re-create that board and load into html
-				var title = boards[i].title;
-				var board = new Board(title);
-				board.render();
+				console.log("board before render", boards[i]);
+				boards[i].render(boards[i]);
+				console.log("board after render", boards[i]);
 				document.getElementById('container').innerHTML = '';
-				document.getElementById('container').appendChild(board.node);
-				currentBoard = board;
+				document.getElementById('container').appendChild(boards[i].node);
+				currentBoard = boards[i];
 			}
 		}
 	
@@ -71,10 +59,8 @@ function displayDash(boards) {
 			var boardList = document.getElementsByClassName("boards");
 			for (let i = 0; i < boardList.length; i++) {
 				boardList[i].addEventListener('click', displayBoard);
-				console.log("adding click events");
 			}
 		}
-		console.log("DASH INIT")
 		var addBoardBtn = document.getElementById('addBoardBtn');
 }
 

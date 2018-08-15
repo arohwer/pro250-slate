@@ -23,13 +23,13 @@
 		}
 
 		this.id = this.getNextId();
-		console.log("BOARD ID", this.id);
-
 		this.node.id = 'board' + this.id;
 	}
 
 	Board.prototype.render = function () {
-		this.lists.push(new List(this, 'Add a list...', 0, true))
+		if (this.lists.length == 0) {
+			this.lists.push(new List(this, 'Add a list...', 0, true))
+		}
 		for (var i = 0; i < this.lists.length; ++i) {
 			this.listsNode.appendChild(this.lists[i].node)
 		}

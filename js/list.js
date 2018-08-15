@@ -9,7 +9,9 @@ function List(board, title, index, dummyList) {
 	this.node.classList.add('list')
 	this.titleNode.classList.add('list-title')
 	this.cardsNode.classList.add('list-cards')
-	this.titleNode.setAttribute('list-index', index)
+	this.titleNode.id = "trello-list-title-input";
+	this.titleNode.setAttribute('list-index', index);
+	this.titleNode.setAttribute("contenteditable", true);
 	this.titleNode.appendChild(document.createTextNode(this.title))
 	this.node.appendChild(this.titleNode)
 
@@ -17,6 +19,7 @@ function List(board, title, index, dummyList) {
 		var dummyCard = new Card(this, 'Add a card...', 0)
 
 		this.titleNode.draggable = true
+		
 		this.cards = [dummyCard]
 		board.registerCard(this.cards[0], 0)
 
