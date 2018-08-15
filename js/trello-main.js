@@ -22,7 +22,7 @@ function addNewBoard() {
 		boards.push(newBoard);
 		displayDash(boards);
 	}
-	modal.style.display='none';
+	modal.style.display = 'none';
 	boardTitleText.value = '';
 	console.log(addBoardBtn);
 }
@@ -67,12 +67,19 @@ function displayDash(boards) {
 		for (let i = 0; i < boardList.length; i++) {
 			boardList[i].addEventListener('click', displayBoard);
 		}
-		addBoardBtn = document.getElementById('addBoardBtn');
-		addBoardBtn.onclick = function() {
-			console.log("ADD CLICKED")
-			modal.style.display = "block";
-		}
 	}
+
+	addBoardBtn = document.getElementById('addBoardBtn');
+	addBoardBtn.onclick = function () {
+		console.log("ADD CLICKED")
+		modal.style.display = "block";
+	}
+	document.getElementById('create').onclick = function(evt) {
+		addNewBoard();
+	};
+	document.getElementById('addBoardLink').onclick = function(evt) {
+		modal.style.display = "block";
+	};
 	document.getElementById("dashboardIcon").style.display = "none";
 	document.getElementById("chatLink").style.display = "none";
 	document.getElementById("dashboardLink").style.display = "block";
@@ -85,20 +92,3 @@ function displayDash(boards) {
 }
 
 displayDash(boards);
-
-
-
-//EVENT LISTENERS
-
-// var logoBtn = document.getElementById("logo");
-// var dashLink = document.getElementById("dashboardLink");
-// logoBtn.addEventListener('click', load);
-
-function load() {
-	displayDash(boards);
-}
-
-
-
-var create = document.getElementById('create');
-create.addEventListener('click', addNewBoard)
