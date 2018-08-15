@@ -1,10 +1,27 @@
 var boards = new Array();
 
-function addNewBoard() {
-	var newBoard = new Board("Title 1");
-	boards.push(newBoard);
-	//console.log("BOARDS: ", boards);
-	displayDash(boards);
+// ADD NEW BOARD MODAL
+var modal = document.getElementById('myModal');
+var cancel = document.getElementById('cancel');
+var boardTitleText = document.getElementById('boardTitleText');
+
+
+
+
+cancel.onclick = function() {
+	modal.style.display='none';
+}
+
+
+function addNewBoard(){
+	console.log("TITLE: ", boardTitleText.value);
+	if(boardTitleText.value != null && boardTitleText.value != ""){
+		var newBoard = new Board("SlateBoard");
+		newBoard.title = boardTitleText.value;
+		boards.push(newBoard);
+		displayDash(boards);
+	}
+	modal.style.display='none';
 }
 
 function newBoardModal(){
@@ -45,7 +62,6 @@ function displayDash(boards) {
 			}
 		}
 		var addBoardBtn = document.getElementById('addBoardBtn');
-		addBoardBtn.addEventListener('click', addNewBoard);
 }
 
 displayDash(boards);
@@ -61,21 +77,11 @@ function load() {
 	displayDash(boards);
 }
 
-//ADD NEW BOARD MODAL
-var modal = document.getElementById('myModal');
+addBoardBtn.onclick = function() {
+	modal.style.display = "block";
+}
 
-var span = document.getElementsByClassName("close")[0];
+var create = document.getElementById('create');
+create.addEventListener('click', addNewBoard)
 
-// addBoardBtn.onclick = function() {
-//     modal.style.display = "block";
-// }
 
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
-
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
