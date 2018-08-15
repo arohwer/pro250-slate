@@ -22,12 +22,8 @@ function addNewBoard(){
 		displayDash(boards);
 	}
 	modal.style.display='none';
+	console.log(addBoardBtn);
 }
-
-function newBoardModal(){
-
-}
-
 
 function displayBoard() {
 	var id = this.id;
@@ -78,6 +74,7 @@ function load() {
 }
 
 addBoardBtn.onclick = function() {
+	console.log("ADD CLICKED")
 	modal.style.display = "block";
 }
 
