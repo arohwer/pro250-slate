@@ -221,12 +221,14 @@ textarea {
   font-family: 'Damion', cursive;
   font-size: 2.5em;
   max-height: max-content;
+  user-select: none;
 }
 
 #dashboardLink {
   font-family: 'Lato', sans-serif;
   font-size: 1.3em;
   cursor: pointer;
+  user-select: none;
 }
 
 #dashboardIcon {
@@ -291,11 +293,18 @@ textarea {
 }
 
 .list-title {
-  min-height: 19px;
+  box-sizing: border-box;
+  min-height: 30px;
   padding: 8px 34px 8px 10px;
   font-size: 15px;
   line-height: 18px;
   font-weight: bold;
+}
+
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+border:none;
+outline:none;
 }
 
 .list-cards {
@@ -345,9 +354,9 @@ textarea {
   top: 50px;
   left: 50%;
   margin: 0px 0 0 -300px;
-  padding: 50px;
+  /* padding: 50px; */
   border-radius: 3px;
-  background-color: #ccc;
+  background-color: #D2D7DF;
 }
 
 #card-edit div {
@@ -361,6 +370,7 @@ textarea {
 }
 
 #card-edit-inputs input {
+  font-family: 'Lato', sans-serif;
   width: 300px;
 }
 
@@ -406,17 +416,29 @@ textarea {
 }
 
 #card-edit-delete {
-  float: left;
-  width: 70px;
-  background-color: #7B1401;
-  color: #fff;
+  width: 300px;
+  height: 60px;
+  margin: 0px !important;
+  padding: 0px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+  font-size: 1.1em;
+  border-radius: 0px 0px 0px 3px;
 }
 
 #card-edit-submit {
-  float: right;
-  width: 70px;
-  background-color: #5AA3F2;
-  color: #fff;
+  width: 300px;
+  height: 60px;
+  margin: 0px !important;
+  padding: 0px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+  font-size: 1.1em;  
+  border-radius: 0px 0px 3px 0px;
 }
 
 #trello-title-board {
@@ -528,6 +550,7 @@ textarea {
 .img-logo{
   max-width: 28px;
   cursor: pointer;
+  user-select: none;
 }
 
   /*DASHBOARD CSS*/
@@ -553,6 +576,7 @@ textarea {
     font-weight:600;
     margin:20px;
     opacity:0.8;
+    user-select: none;
   }
 
   .boardBox{
@@ -607,6 +631,7 @@ textarea {
   text-align: center;
   color: #3CAFF0;
   margin-top:20px;
+  user-select: none;
 }
 /* Modal Content */
 .modal-content {
@@ -637,6 +662,7 @@ textarea {
   border-radius: 5px;
   margin-top:20px;
   margin-bottom:20px;
+  user-select: none;
 }
 
 .button-box{
@@ -644,6 +670,7 @@ textarea {
   border-radius: 5px;
   flex-direction: row;
   display: flex; 
+  user-select: none;
 }
 
 .no-bg:hover{
@@ -676,6 +703,7 @@ textarea {
 #card-edit-inputs {
   padding-bottom: 20px;
 }
+
 
 #card-edit-close {
   font-size: 20px;

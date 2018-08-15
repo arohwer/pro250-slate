@@ -21,13 +21,9 @@ function addNewBoard() {
 		boards.push(newBoard);
 		displayDash(boards);
 	}
-	modal.style.display = 'none';
+	modal.style.display='none';
+	console.log(addBoardBtn);
 }
-
-function newBoardModal() {
-
-}
-
 
 function displayBoard() {
 	var id = this.id;
@@ -96,7 +92,8 @@ function load() {
 	displayDash(boards);
 }
 
-addBoardBtn.onclick = function () {
+addBoardBtn.onclick = function() {
+	console.log("ADD CLICKED")
 	modal.style.display = "block";
 }
 
