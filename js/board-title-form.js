@@ -13,7 +13,7 @@ function buildDashboardContainer(boards) {
     for (board in boards) {
         node.innerHTML +=
             '<div class="boardBox">' +
-            `<i class="fas fa-pencil-alt" id="board_${boards[board].id}"></i>` +
+            `<i class="fas fa-pencil-alt editBoardBtn" id="${board}"></i>` +
             `<h6 id="board_${boards[board].id}" class="boardName boards">${boards[board].title}</h6>`
         '</div>'
     }
