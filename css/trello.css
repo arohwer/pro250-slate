@@ -604,8 +604,19 @@ outline:none;
     right:10px;
   }
 
-  .fa-pencil-alt:hover{
+  .fa-times{
+    color:white;
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+
+  .fa-pencil-alt:hover, .fa-times:hover{
     color:rgba(255, 255, 255, 0.735);
+    /* background:rgba(255, 255, 255, 0.735);
+    padding:3px;
+    border-radius:5px; */
   }
 
   .fa-plus-circle{
@@ -642,6 +653,7 @@ outline:none;
   width: 30%;
   border-radius:5px;
   text-align:center;
+  position:relative;
 }
 
 .modal-btn{
@@ -651,7 +663,7 @@ outline:none;
   cursor:pointer;
 }
 
-#boardTitleText{
+#boardTitleText, #editTitleText{
   text-align: center;
   width: 250px;
   height: 25px;

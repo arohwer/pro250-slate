@@ -1,18 +1,46 @@
 var boards = new Array();
+var dashboard;
 
 // ADD NEW BOARD MODAL
 var modal = document.getElementById('myModal');
+var editModal = document.getElementById('editBoardModal');
 var cancel = document.getElementById('cancel');
+var close = document.getElementById('close');
 var boardTitleText = document.getElementById('boardTitleText');
+var editTitleText = document.getElementById('editTitleText');
 var addBoardBtn;
+var editBoardBtn;
 
+var deleteBoard = document.getElementById('delete');
+var saveBoard = document.getElementById('save');
 
+var selectedBoard;
 
 
 cancel.onclick = function () {
 	modal.style.display = 'none';
 }
 
+close.onclick = function () {
+	editModal.style.display = 'none';
+}
+
+saveBoard.onclick = function () {
+	if(editTitleText.value != null ** editTitleText.value != ""){
+		selectedBoard.title = editTitleText.value;
+	}
+	editModal.style.display = 'none';
+	console.log("NEW B: ", boards);
+	displayDash(boards);
+}
+
+deleteBoard.onclick = function () {
+	dashboard.unregisterBoard(selectedBoard);
+	editModal.style.display = 'none';
+	console.log("NEW B: ", boards);
+	displayDash(boards);
+
+}
 
 function addNewBoard() {
 	console.log("TITLE: ", boardTitleText.value);
@@ -56,7 +84,7 @@ function displayBoard() {
 
 function displayDash(boards) {
 	//pass in list of boards
-	var dashboard = new Dashboard(boards);
+	dashboard = new Dashboard(boards);
 	dashboard.render();
 	document.getElementById('container').innerHTML = '';
 	document.getElementById('container').appendChild(dashboard.node);
@@ -74,6 +102,16 @@ function displayDash(boards) {
 		console.log("ADD CLICKED")
 		modal.style.display = "block";
 	}
+
+	editBoardBtn = document.getElementsByClassName('editBoardBtn');
+	for(var i=0; i < editBoardBtn.length; i++){
+		editBoardBtn[i].onclick = function(){
+			editModal.style.display = "block";
+			editTitleText.value = boards[i-1].title;
+			selectedBoard = boards[i-1];
+		}
+	}
+
 	document.getElementById('create').onclick = function(evt) {
 		addNewBoard();
 	};
