@@ -39,6 +39,7 @@ function addListTrello(board) {
 				listIndex = index;
 				titleInput.textContent = '+ Add list';
 				currentList = new List(board, listContent, listIndex);
+				currentList.id = this.id + 1;
 				board.lists.splice(listIndex, 0, currentList);
 				board.listsNode.insertBefore(currentList.node,
 					board.lists[listIndex + 1].node)

@@ -67,8 +67,15 @@
 		delete this.cards[card.id]
 	}
 
-	Board.prototype.unregisterList = function (list) {
-		delete this.lists[list.id]
+	Board.prototype.unregisterList = function (index, currBoard) {
+		console.log("list to delete", index);
+		console.log("current board", currBoard);
+
+		index = index - 1;
+		this.lists.splice(index, 1);
+		console.log(this.lists);
+		document.getElementById("trello-canvas-board").innerHTML = '';
+		currBoard.render();
 	}
 
 
