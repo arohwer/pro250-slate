@@ -292,6 +292,11 @@ textarea {
   cursor: pointer;
 }
 
+.list-top {
+  display: flex;
+  flex-direction: row;
+}
+
 .list-title {
   box-sizing: border-box;
   min-height: 30px;
@@ -299,6 +304,18 @@ textarea {
   font-size: 15px;
   line-height: 18px;
   font-weight: bold;
+  /* background: url(../images/trash-alt-regular.svg) no-repeat; */
+}
+
+.list-trash-container {
+  max-height: max-content;
+  max-width: max-content;
+  cursor: pointer;
+}
+
+.list-trash-container i {
+  margin: 8px;
+  cursor: pointer;
 }
 
 [contenteditable="true"]:active,
