@@ -1,4 +1,5 @@
 function List(board, title, index, dummyList) {
+
 	this.board = board
 	this.dummyList = dummyList
 	this.title = title
@@ -14,6 +15,24 @@ function List(board, title, index, dummyList) {
 	this.titleNode.setAttribute("contenteditable", true);
 	this.titleNode.appendChild(document.createTextNode(this.title))
 	this.node.appendChild(this.titleNode)
+
+	var nextId;
+
+	if (this.board.lists.length > 0) {
+		var lastListIndex = this.board.lists.length - 1;
+		nextId = this.board.lists[lastListIndex].id;
+	}
+	else {
+		nextId = 0;
+	}
+
+	this.getNextId = function () {
+		var id = parseInt(nextId, 10);
+		return '_' + (id += 1).toString();
+	}
+
+	this.id = this.getNextId().split("_")[1];
+	this.titleNode.id = 'list_' + this.id;
 
 	if (!dummyList) {
 		var dummyCard = new Card(this, '+ Add card', 0)

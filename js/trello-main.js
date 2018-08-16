@@ -17,7 +17,7 @@ cancel.onclick = function () {
 function addNewBoard() {
 	console.log("TITLE: ", boardTitleText.value);
 	if (boardTitleText.value != null && boardTitleText.value != "") {
-		var newBoard = new Board(boardTitleText.value);
+		var newBoard = new Board(boardTitleText.value, boards);
 		newBoard.title = boardTitleText.value;
 		boards.push(newBoard);
 		displayDash(boards);
@@ -32,8 +32,8 @@ function displayBoard() {
 	var boardId = id.toString().split("_");
 	for (let i = 0; i < dash.boards.length; i++) {
 		//get the board from boards that was clicked given the nodeid
-		var boardListId = boards[i].id.toString().split("_");
-		if (boardListId[1] == boardId[2]) {
+		//var boardListId = boards[i].id.toString().split("_");
+		if (boards[i].id == boardId[1]) {
 			console.log("board before render", boards[i]);
 			boards[i].render(boards[i]);
 			console.log("board after render", boards[i]);
@@ -71,7 +71,7 @@ function displayDash(boards) {
 
 	addBoardBtn = document.getElementById('addBoardBtn');
 	addBoardBtn.onclick = function () {
-		console.log("ADD CLICKED")
+		console.log("ADD CLICKED");
 		modal.style.display = "block";
 	}
 	document.getElementById('create').onclick = function(evt) {
@@ -83,6 +83,7 @@ function displayDash(boards) {
 	document.getElementById("dashboardIcon").style.display = "none";
 	document.getElementById("chatLink").style.display = "none";
 	document.getElementById("dashboardLink").style.display = "block";
+	document.getElementById("addBoardLink").style.display = "block";
 	document.getElementById("logo").onclick = function (evt) {
 		displayDash(boards);
 	};
