@@ -3,18 +3,15 @@ function addListTrello(board) {
 	return function () {
 		var titleInput = document.getElementById('trello-list-title-input');
 
-		//document.getElementById('trello-list-title-submit').onclick = titleButtonClick
-		//titleInput.onclick = titleButtonClick
-
 		var listContent;
 		var listIndex;
 		var currentList;
-
 		var added = false;
+
 		function addList(evt) {
 			evt.preventDefault();
 			var title = titleInput.innerHTML.trim(),
-			index = board.lists.length - 1;
+				index = board.lists.length - 1;
 			board.titleFormNode.style.display = 'none';
 			titleInput.value = '';
 			if (!title) {
@@ -27,10 +24,11 @@ function addListTrello(board) {
 		}
 
 		titleInput.addEventListener("input", addList);
-
-		//board.titleFormNode.style.display = 'block'
-		//titleInput.focus();
-		
+		titleInput.addEventListener("keypress", function (evt) {
+			if (evt.which === 13) {
+				evt.preventDefault();
+			}
+		});
 		function focusOut(evt) {
 			console.log('FOCUS OUT', added);
 			if (added === true) {
@@ -46,25 +44,5 @@ function addListTrello(board) {
 		}
 
 		titleInput.addEventListener("focusout", focusOut);
-
-		function titleButtonClick(evt) {
-			console.log("in click event");
-			evt.preventDefault();
-			var title = titleInput.innerHTML.trim(),
-				index = board.lists.length - 1,
-				list;
-
-			board.titleFormNode.style.display = 'none';
-			titleInput.value = '';
-			if (!title) {
-				return
-			}
-
-			list = new List(board, title, index)
-			board.lists.splice(index, 0, list)
-			board.listsNode.insertBefore(list.node,
-				board.lists[index + 1].node)
-			board.lists[index + 1].titleNode.setAttribute('list-index', index + 1)
-		}
 	}
 }
