@@ -10,28 +10,33 @@ function addListTrello(board) {
 
 		function addList(evt) {
 			evt.preventDefault();
-			var title = titleInput.innerHTML.trim(),
-				index = board.lists.length - 1;
-			board.titleFormNode.style.display = 'none';
-			titleInput.value = '';
-			if (!title) {
-				return
-			}
-			listContent = title;
-			listIndex = index;
 			added = true;
 			console.log(added);
 		}
 
 		titleInput.addEventListener("input", addList);
+		titleInput.onclick = function (evt) {
+			titleInput.innerHTML = '';
+		}
+
 		titleInput.addEventListener("keypress", function (evt) {
 			if (evt.which === 13) {
 				evt.preventDefault();
 			}
 		});
+
 		function focusOut(evt) {
 			console.log('FOCUS OUT', added);
 			if (added === true) {
+				var title = titleInput.innerHTML.trim(),
+					index = board.lists.length - 1;
+				board.titleFormNode.style.display = 'none';
+				titleInput.value = '';
+				if (!title) {
+					return
+				}
+				listContent = title;
+				listIndex = index;
 				titleInput.textContent = '+ Add list';
 				currentList = new List(board, listContent, listIndex);
 				board.lists.splice(listIndex, 0, currentList);
@@ -39,6 +44,10 @@ function addListTrello(board) {
 					board.lists[listIndex + 1].node)
 				board.lists[listIndex + 1].titleNode.setAttribute('list-index', listIndex + 1);
 				added = false;
+			}
+			if (added === false) {
+				index = board.lists.length - 1;
+				titleInput.innerHTML = board.lists[index].title;
 			}
 			console.log('FOCUS OUT', added);
 		}

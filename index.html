@@ -15,7 +15,8 @@
 <body>
     <header class="site-header">
         <nav class="nav-color navbar-fixed-col">
-            <a id="dashboardLink" class="lightgrey-text" href="#">Dashboard</a>
+            <a id="dashboardLink" class="lightgrey-text">Dashboard</a>
+            <a id="dashboardIcon" class="lightgrey-text"><i class="fas fa-home"></i></a>
             <span class="lightgrey-text logo-span">
                 <img src="images/icon-white.png" class="img-logo nav-logo" id="logo">
                 Slate
@@ -70,7 +71,6 @@
     </div>
 
     <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
           <h4 class='modal-title'>Add New Board</h4>
           <input type='text' placeholder="Board Title" id='boardTitleText'/>
@@ -79,7 +79,23 @@
             <div class='modal-btn green-bg yes-bg' id='create'>Create</div>
           </div>
         </div>
-      
+    </div>
+
+    <div id="editBoardModal" class="modal">
+        <div class="modal-content">
+        <i class="fas fa-times" id='close'></i>
+          <h4 class='modal-title'>Edit Board</h4>
+        
+          <input type='text' placeholder="Board Title" id='editTitleText'/>
+          <div class='button-box'>
+            <div class='modal-btn red-bg no-bg' id='delete' >Delete <i class="far fa-trash-alt"></i>
+
+            </div>
+            <div class='modal-btn green-bg yes-bg' id='save'>Save <i class="far fa-save"></i>
+
+            </div>
+          </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="js/card-delete.js"></script>
