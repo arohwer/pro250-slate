@@ -1,4 +1,5 @@
 function List(board, title, index, dummyList) {
+
 	this.board = board
 	this.dummyList = dummyList
 	this.title = title
@@ -6,6 +7,10 @@ function List(board, title, index, dummyList) {
 	this.node = document.createElement('div')
 	this.titleNode = document.createElement('div')
 	this.cardsNode = document.createElement('div')
+	this.iconNode = document.createElement('div')
+	this.listTop = document.createElement('div')
+	this.listTop.classList.add('list-top')
+	this.iconNode.classList.add('list-trash-container')
 	this.node.classList.add('list')
 	this.titleNode.classList.add('list-title')
 	this.cardsNode.classList.add('list-cards')
@@ -13,7 +18,32 @@ function List(board, title, index, dummyList) {
 	this.titleNode.setAttribute('list-index', index);
 	this.titleNode.setAttribute("contenteditable", true);
 	this.titleNode.appendChild(document.createTextNode(this.title))
-	this.node.appendChild(this.titleNode)
+	var icon = document.createElement('i');
+	icon.classList.add("far");
+	icon.classList.add("fa-trash-alt");
+	this.iconNode.appendChild(icon);
+	this.listTop.appendChild(this.titleNode);
+	this.listTop.appendChild(this.iconNode);
+	this.node.appendChild(this.listTop);
+
+	var nextId;
+
+	if (this.board.lists.length > 0) {
+		var lastListIndex = this.board.lists.length - 1;
+		nextId = this.board.lists[lastListIndex].id;
+	}
+	else {
+		nextId = 0;
+	}
+
+	this.getNextId = function () {
+		var id = parseInt(nextId, 10);
+		return '_' + (id += 1).toString();
+	}
+
+	this.id = this.getNextId().split("_")[1];
+	this.node.id = 'list_' + this.id;
+	this.iconNode.id = 'del_' + this.node.id;
 
 	if (!dummyList) {
 		var dummyCard = new Card(this, '+ Add card', 0)

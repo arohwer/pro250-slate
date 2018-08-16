@@ -1,6 +1,14 @@
 	//Board constructor object and assign some properties to its prototype
-	function Board(title) {
-		var nextId = 0;
+	function Board(title, boards) {
+		var nextId;
+
+		if (boards.length > 0) {
+			var lastBoardIndex = boards.length - 1;
+			nextId = boards[lastBoardIndex].id;
+		}
+		else {
+			nextId = 0;
+		}
 
 		this.title = title;
 		this.lists = [];
@@ -19,11 +27,12 @@
 		this.titleNode.appendChild(document.createTextNode(this.title));
 
 		this.getNextId = function () {
-			return '_' + (nextId++).toString();
+			var id = parseInt(nextId, 10);
+			return '_' + (id += 1).toString();
 		}
 
-		this.id = this.getNextId();
-		this.node.id = 'board' + this.id;
+		this.id = this.getNextId().split("_")[1];
+		this.node.id = 'board_' + this.id;
 	}
 
 	Board.prototype.render = function () {
@@ -56,6 +65,10 @@
 
 	Board.prototype.unregisterCard = function (card) {
 		delete this.cards[card.id]
+	}
+
+	Board.prototype.unregisterList = function (list) {
+		delete this.lists[list.id]
 	}
 
 
