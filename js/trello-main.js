@@ -26,7 +26,7 @@ close.onclick = function () {
 }
 
 saveBoard.onclick = function () {
-	if(editTitleText.value != null ** editTitleText.value != ""){
+	if (editTitleText.value != null && editTitleText.value != "") {
 		selectedBoard.title = editTitleText.value;
 	}
 	editModal.style.display = 'none';
@@ -39,7 +39,6 @@ deleteBoard.onclick = function () {
 	editModal.style.display = 'none';
 	console.log("NEW B: ", boards);
 	displayDash(boards);
-
 }
 
 function addNewBoard() {
@@ -60,7 +59,6 @@ function displayBoard() {
 	var boardId = id.toString().split("_");
 	for (let i = 0; i < dash.boards.length; i++) {
 		//get the board from boards that was clicked given the nodeid
-		//var boardListId = boards[i].id.toString().split("_");
 		if (boards[i].id == boardId[1]) {
 			console.log("board before render", boards[i]);
 			boards[i].render(boards[i]);
@@ -104,18 +102,18 @@ function displayDash(boards) {
 	}
 
 	editBoardBtn = document.getElementsByClassName('editBoardBtn');
-	for(var i=0; i < editBoardBtn.length; i++){
-		editBoardBtn[i].onclick = function(){
+	for (var i = 0; i < editBoardBtn.length; i++) {
+		editBoardBtn[i].onclick = function () {
 			editModal.style.display = "block";
-			editTitleText.value = boards[i-1].title;
-			selectedBoard = boards[i-1];
+			editTitleText.value = boards[i - 1].title;
+			selectedBoard = boards[i - 1];
 		}
 	}
 
-	document.getElementById('create').onclick = function(evt) {
+	document.getElementById('create').onclick = function (evt) {
 		addNewBoard();
 	};
-	document.getElementById('addBoardLink').onclick = function(evt) {
+	document.getElementById('addBoardLink').onclick = function (evt) {
 		modal.style.display = "block";
 	};
 	document.getElementById("dashboardIcon").style.display = "none";

@@ -27,28 +27,55 @@ function List(board, title, index, dummyList) {
 	this.listTop.appendChild(this.iconNode);
 	this.node.appendChild(this.listTop);
 
+	if (this.dummyList == true) {
+		this.iconNode.style.display = "none";
+	}
 	var nextId;
 
 	if (this.board.lists.length > 0) {
-		var lastListIndex = this.board.lists.length - 1;
-		nextId = this.board.lists[lastListIndex].id;
+		// if (this.board.lists.length == 1 && this.board.lists[this.board.lists.length - 1].id == 1) {
+		// 	nextId = 0;
+		// } else {
+		// var lastListIndex = this.board.lists.length - 1;
+		// nextId = this.board.lists[0].id;
+		// var array = this.board.lists;
+		// var index = array.slice().reverse().findIndex(x => x[dummyList] === false);
+		// var count = array.length - 1
+		// var finalIndex = index >= 0 ? count - index : index;
+		// console.log(finalIndex);
+		// var nextId = finalIndex;
+		var nextId = this.index;
+		console.log("last id", nextId);
+		//}
 	} else {
 		nextId = 0;
 	}
 
 	this.getNextId = function () {
 		var id = parseInt(nextId, 10);
-		return '_' + (id += 1).toString();
+		if (dummyList == false) {
+			id = id + 1;
+		}
+		return '_' + (id).toString();
 	}
 
 	this.id = this.getNextId().split("_")[1];
 	this.node.id = 'list_' + this.id;
+	console.log("LIST NODE ID", this.node.id);
 	this.iconNode.id = 'del_' + this.node.id;
 
 	this.iconNode.onclick = function (evt) {
 		console.log("board for list", board);
+		console.log("LIST TO DELETE", this);
 		var idToDelete = this.id.split("_")[2];
-		board.unregisterList(idToDelete, board);
+		idToDelete = parseInt(idToDelete, 10);
+		console.log("list id", idToDelete);
+		var listDel = board.lists[idToDelete - 1];
+		if (listDel == undefined && board.lists.length == 1) {
+			listDel = board.lists[0];
+		}
+		console.log("LIST TO DELETE", listDel);
+		board.unregisterList(idToDelete, listDel, board);
 	}
 
 	if (!dummyList) {

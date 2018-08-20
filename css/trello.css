@@ -458,6 +458,41 @@ outline:none;
   border-radius: 0px 0px 3px 0px;
 }
 
+input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #95a5a6;
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url(../images/calendaricon.svg) no-repeat;
+  cursor: pointer;
+}
+
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 5px;
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+input[type="date"], focus {
+  color: #95a5a6;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
 #trello-title-board {
   padding: 10px 8px;
   font-size: 18px;
@@ -718,6 +753,10 @@ outline:none;
   min-height: 20px;
   font-family: 'Lato', sans-serif;
 
+}
+
+#close {
+  cursor: pointer;
 }
 
 .modal-title-card{

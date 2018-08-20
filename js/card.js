@@ -16,10 +16,13 @@ function buildCardNode() {
 /*
  This function is constructor function for card
  */
-function Card(list, title) {
-	this.id = list.board.getNextId()
+function Card(list, title, description, dueDate) {
+	this.id = "card" + list.board.getNextId()
+	console.log("CARD ID", this.id);
 	this.list = list
 	this.title = title
+	this.description = description
+	this.due = dueDate
 	this.node = buildCardNode()
 	this.titleNode = this.node.getElementsByClassName('card-title')[0]
 
@@ -79,6 +82,7 @@ function Card(list, title) {
 		return function () {
 			cardEdit.card = card
 			cardEdit.titleNode.value = card.title;
+			//add date and desc here
 			cardEdit.show()
 		}
 	}(this))
