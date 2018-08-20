@@ -1,4 +1,5 @@
 function List(board, title, index, dummyList) {
+	console.log("board passed in", board);
 
 	this.board = board
 	this.dummyList = dummyList
@@ -31,8 +32,7 @@ function List(board, title, index, dummyList) {
 	if (this.board.lists.length > 0) {
 		var lastListIndex = this.board.lists.length - 1;
 		nextId = this.board.lists[lastListIndex].id;
-	}
-	else {
+	} else {
 		nextId = 0;
 	}
 
@@ -45,11 +45,17 @@ function List(board, title, index, dummyList) {
 	this.node.id = 'list_' + this.id;
 	this.iconNode.id = 'del_' + this.node.id;
 
+	this.iconNode.onclick = function (evt) {
+		console.log("board for list", board);
+		var idToDelete = this.id.split("_")[2];
+		board.unregisterList(idToDelete, board);
+	}
+
 	if (!dummyList) {
 		var dummyCard = new Card(this, '+ Add card', 0)
 
 		this.titleNode.draggable = true
-		
+
 		this.cards = [dummyCard]
 		board.registerCard(this.cards[0], 0)
 
@@ -80,24 +86,26 @@ function List(board, title, index, dummyList) {
 	}
 
 	this.titleNode.ondrop = function (evt) {
-		var sourceIndex = dragTracker.list.index
-			, targetIndex = parseInt(this.getAttribute('list-index'), 10)
-			, numLists = board.lists.length
-			, i
+		var sourceIndex = dragTracker.list.index,
+			targetIndex = parseInt(this.getAttribute('list-index'), 10),
+			numLists = board.lists.length,
+			i
 
-		if (sourceIndex === targetIndex) { return }
+		if (sourceIndex === targetIndex) {
+			return
+		}
 
 		board.listsNode.removeChild(dragTracker.list.node)
 		board.listsNode.insertBefore(dragTracker.list.node,
 			board.lists[targetIndex].node)
 
-		for (i = sourceIndex; i < numLists-1; ++i) {
-			board.lists[i] = board.lists[i+1]
+		for (i = sourceIndex; i < numLists - 1; ++i) {
+			board.lists[i] = board.lists[i + 1]
 			board.lists[i].titleNode.setAttribute('list-index', i)
 			board.lists[i].index = i
 		}
-		for (i = numLists-1; i > targetIndex; --i) {
-			board.lists[i] = board.lists[i-1]
+		for (i = numLists - 1; i > targetIndex; --i) {
+			board.lists[i] = board.lists[i - 1]
 			board.lists[i].titleNode.setAttribute('list-index', i)
 			board.lists[i].index = i
 		}
