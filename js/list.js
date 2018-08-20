@@ -1,5 +1,5 @@
 function List(board, title, index, dummyList) {
-	console.log("board passed in", board);
+	//console.log("board passed in", board);
 
 	this.board = board
 	this.dummyList = dummyList
@@ -33,20 +33,8 @@ function List(board, title, index, dummyList) {
 	var nextId;
 
 	if (this.board.lists.length > 0) {
-		// if (this.board.lists.length == 1 && this.board.lists[this.board.lists.length - 1].id == 1) {
-		// 	nextId = 0;
-		// } else {
-		// var lastListIndex = this.board.lists.length - 1;
-		// nextId = this.board.lists[0].id;
-		// var array = this.board.lists;
-		// var index = array.slice().reverse().findIndex(x => x[dummyList] === false);
-		// var count = array.length - 1
-		// var finalIndex = index >= 0 ? count - index : index;
-		// console.log(finalIndex);
-		// var nextId = finalIndex;
 		var nextId = this.index;
-		console.log("last id", nextId);
-		//}
+		//console.log("last id", nextId);
 	} else {
 		nextId = 0;
 	}
@@ -61,42 +49,47 @@ function List(board, title, index, dummyList) {
 
 	this.id = this.getNextId().split("_")[1];
 	this.node.id = 'list_' + this.id;
-	console.log("LIST NODE ID", this.node.id);
+	//console.log("LIST NODE ID", this.node.id);
 	this.iconNode.id = 'del_' + this.node.id;
 
 	this.iconNode.onclick = function (evt) {
-		console.log("board for list", board);
-		console.log("LIST TO DELETE", this);
+		//console.log("board for list", board);
+		//console.log("LIST TO DELETE", this);
 		var idToDelete = this.id.split("_")[2];
 		idToDelete = parseInt(idToDelete, 10);
-		console.log("list id", idToDelete);
-		var listDel = board.lists[idToDelete - 1];
-		if (listDel == undefined && board.lists.length == 1) {
-			listDel = board.lists[0];
+		//console.log("list id", idToDelete);
+
+		var listDel = undefined;
+		for (let i = 0; i < board.lists.length; i++) {
+			var listID = parseInt(board.lists[i].id, 10);
+			//console.log("ids", listID);
+			if (listID === idToDelete) {
+				listDel = board.lists[i];
+			}
 		}
-		console.log("LIST TO DELETE", listDel);
+		//console.log("LIST TO DELETE", listDel);
 		board.unregisterList(idToDelete, listDel, board);
 	}
 
 	if (!dummyList) {
-		var dummyCard = new Card(this, '+ Add card', 0)
+		var dummyCard = new Card(this, '+ Add card', 0);
 
-		this.titleNode.draggable = true
+		this.titleNode.draggable = true;
 
-		this.cards = [dummyCard]
-		board.registerCard(this.cards[0], 0)
+		this.cards = [dummyCard];
+		board.registerCard(this.cards[0], 0);
 
 		// new card title form
-		this.titleFormNode = buildCardTitleForm()
+		this.titleFormNode = buildCardTitleForm();
 
 		for (var i = 0; i < this.cards.length; ++i) {
-			this.cardsNode.appendChild(this.cards[i].node)
+			this.cardsNode.appendChild(this.cards[i].node);
 		}
-		dummyCard.titleNode.onclick = addCardTrello(this)
-		this.node.appendChild(this.cardsNode)
-		dummyCard.node.appendChild(this.titleFormNode)
-		dummyCard.node.draggable = false
-		dummyCard.node.onclick = undefined
+		dummyCard.titleNode.onclick = addCardTrello(this);
+		this.node.appendChild(this.cardsNode);
+		dummyCard.node.appendChild(this.titleFormNode);
+		dummyCard.node.draggable = false;
+		dummyCard.node.onclick = undefined;
 	}
 
 	// drag-drop handlers
