@@ -11,6 +11,7 @@ var cardDesc = document.getElementById("card-edit-desc");
 
 function addCardTrello(list) {
 	cardsList = list;
+	console.log("LIST TO ADD TO", cardsList);
 	return function () {
 		console.log("card clicked", this);
 		console.log("card's list", list);

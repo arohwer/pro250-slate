@@ -85,7 +85,10 @@ function List(board, title, index, dummyList) {
 		for (var i = 0; i < this.cards.length; ++i) {
 			this.cardsNode.appendChild(this.cards[i].node);
 		}
+		
+		//TODO: fix passing wrong list to add cards
 		dummyCard.titleNode.onclick = addCardTrello(this);
+
 		this.node.appendChild(this.cardsNode);
 		dummyCard.node.appendChild(this.titleFormNode);
 		dummyCard.node.draggable = false;
