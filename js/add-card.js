@@ -2,62 +2,73 @@
  This function will add the Card in the list
  */
 
+var cardsList;
+var isEditing = false;
+var cardToEdit;
+var cardTitle = document.getElementById("card-edit-title");
+var cardDate = document.getElementById("card-edit-date");
+var cardDesc = document.getElementById("card-edit-desc");
+
 function addCardTrello(list) {
+	cardsList = list;
 	return function () {
-		console.log("card clicked");
+		console.log("card clicked", this);
+		console.log("card's list", list);
+
+		cardTitle.value = '';
+		cardDate.value = '';
+		cardDesc.value = '';
 		var cardModal = document.getElementById("card-edit");
-		var titleTextarea = list.titleFormNode;
-		//var titleTextarea = list.getElementsByClassName('modal')[0];
-		// list.titleFormNode.getElementsByClassName('trello-new-card-title-submit')[0]
-		// 	.onclick = titleSubmit
-		console.log(titleTextarea);
-		//titleTextarea.style.display = 'block';
-		list.titleFormNode.style.display = 'block';
-		//titleTextarea.focus();
-
-		function titleSubmit(evt) {
-			evt.preventDefault()
-			var title = titleTextarea.value.trim();
-			var card;
-
-			list.titleFormNode.style.display = 'none';
-			titleTextarea.value = '';
-			if (!title) {
-				return
-			}
-
-				card = new Card(list, title, description, dueDate);
-			list.board.registerCard(card, list.cards.length);
-			list.cardsNode.insertBefore(card.node, list.cards[list.cards.length - 1].node);
-			list.cards.push(card);
-		}
+		cardModal.style.display = "block";
 	}
 }
 
-// function addCardTrello(list) {
-// 	return function () {
-// 		var titleTextarea = list.titleFormNode
-// 			.getElementsByClassName('trello-new-card-title-input')[0]
-// 		list.titleFormNode.getElementsByClassName('trello-new-card-title-submit')[0]
-// 			.onclick = titleSubmit
-// 		list.titleFormNode.style.display = 'block';
-// 		titleTextarea.focus();
+function editCard(card) {
+	console.log("card's list", card.list);
+	console.log("card to edit", card);
 
-// 		function titleSubmit(evt) {
-// 			evt.preventDefault()
-// 			var title = titleTextarea.value.trim();
-// 			var card;
+	cardsList = card.list;
+	cardToEdit = card;
 
-// 			list.titleFormNode.style.display = 'none';
-// 			titleTextarea.value = '';
-// 			if (!title) {
-// 				return
-// 			}
+	cardTitle.value = cardToEdit.title;
+	cardDate.value = cardToEdit.due;
+	cardDesc.value = cardToEdit.description;
 
-// 				card = new Card(list, title, description, dueDate);
-// 			list.board.registerCard(card, list.cards.length);
-// 			list.cardsNode.insertBefore(card.node, list.cards[list.cards.length - 1].node);
-// 			list.cards.push(card);
-// 		}
-// 	}
-// }
+	isEditing = true;
+
+	var cardModal = document.getElementById("card-edit");
+	cardModal.style.display = "block";
+}
+
+function addCardSubmit() {
+	var title = cardTitle.value.trim();
+	var date = cardDate.value;
+	var desc = cardDesc.value.trim();
+	var card;
+
+	console.log(title, date, desc);
+	if (!title || !date || !desc) {
+		return
+	}
+
+	if (isEditing) {
+		var cardIndex = cardsList.cards.indexOf(cardToEdit);
+		var cardInArray = cardsList.cards[cardIndex];
+		cardInArray.title = title;
+		cardInArray.date = date;
+		cardInArray.desc = desc;
+		cardToEdit.titleNode.replaceChild(document.createTextNode(title), cardToEdit.titleNode.childNodes[0]);
+	} else {
+		card = new Card(cardsList, title, desc, date);
+		cardsList.board.registerCard(card, cardsList.cards.length);
+		cardsList.cardsNode.insertBefore(card.node, cardsList.cards[cardsList.cards.length - 1].node);
+		cardsList.cards.push(card);
+	}
+	console.log(cardsList.cards);
+	var cardModal = document.getElementById("card-edit");
+	cardModal.style.display = "none";
+
+	cardTitle.value = '';
+	cardDate.value = '';
+	cardDesc.value = '';
+}

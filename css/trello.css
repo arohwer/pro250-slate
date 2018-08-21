@@ -222,6 +222,7 @@ textarea {
   font-size: 2.5em;
   max-height: max-content;
   user-select: none;
+  cursor: pointer;
 }
 
 #dashboardLink {
@@ -739,11 +740,12 @@ input[type="date"], focus {
 
 .no-bg:hover{
   background: rgb(181, 64, 66);
+  cursor: pointer;
 }
 
 .yes-bg:hover{
   background-color: rgb(121, 191, 132);
-
+  cursor: pointer;
 }
 
 .card-textbox{
