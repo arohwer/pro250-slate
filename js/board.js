@@ -1,4 +1,8 @@
 	//Board constructor object and assign some properties to its prototype
+
+	function buildBoardBoxNode(this) {
+		this.title
+	}
 	function Board(title, boards) {
 		var nextId;
 
@@ -17,6 +21,8 @@
 		this.node = document.createElement('div');
 		this.titleNode = document.createElement('div');
 		this.listsNode = document.createElement('div');
+
+		this.boardBoxNode = buildBoardBoxNode(this);
 
 		this.node.className = "boards";
 		this.titleNode.id = 'trello-title-board';
