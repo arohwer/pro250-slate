@@ -30,14 +30,14 @@ saveBoard.onclick = function () {
 		selectedBoard.title = editTitleText.value;
 	}
 	editModal.style.display = 'none';
-	//console.log("NEW B: ", boards);
+	// console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
 deleteBoard.onclick = function () {
 	dashboard.unregisterBoard(selectedBoard);
 	editModal.style.display = 'none';
-	//console.log("NEW B: ", boards);
+	// console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
