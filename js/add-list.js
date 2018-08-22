@@ -38,10 +38,12 @@ function addListTrello(board) {
 				listContent = title;
 				listIndex = index;
 				titleInput.textContent = '+ Add list';
-				currentList = new List(board, listContent, listIndex);
+				currentList = new List(board, listContent, listIndex, false);
+				//currentList.id = this.id + 1;
+				//adding new list
 				board.lists.splice(listIndex, 0, currentList);
-				board.listsNode.insertBefore(currentList.node,
-					board.lists[listIndex + 1].node)
+				//board.lists.push(currentList);
+				board.listsNode.insertBefore(currentList.node, board.lists[listIndex + 1].node);
 				board.lists[listIndex + 1].titleNode.setAttribute('list-index', listIndex + 1);
 				added = false;
 			}

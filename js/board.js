@@ -67,8 +67,21 @@
 		delete this.cards[card.id]
 	}
 
-	Board.prototype.unregisterList = function (list) {
-		delete this.lists[list.id]
+	Board.prototype.unregisterList = function (index, listToDel, currBoard) {
+		//console.log("list to delete", index);
+		//console.log("current board", currBoard);
+		if (listToDel != undefined) {
+			if (listToDel.title != "+ Add list") {
+				// var int = parseInt(index, 10)
+				//index = index - 1;
+				var index = currBoard.lists.indexOf(listToDel);
+				//console.log("index to delete", index);
+				this.lists.splice(index, 1);
+				//console.log("NEW LISTS", this.lists);
+			}
+		}
+		document.getElementById("trello-canvas-board").innerHTML = '';
+		currBoard.render();
 	}
 
 
