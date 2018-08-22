@@ -1,8 +1,4 @@
 	//Board constructor object and assign some properties to its prototype
-
-	function buildBoardBoxNode(this) {
-		this.title
-	}
 	function Board(title, boards) {
 		var nextId;
 
@@ -16,13 +12,11 @@
 
 		this.title = title;
 		this.lists = [];
-		this.cards = {};
+		//this.cards = {};
 
 		this.node = document.createElement('div');
 		this.titleNode = document.createElement('div');
 		this.listsNode = document.createElement('div');
-
-		this.boardBoxNode = buildBoardBoxNode(this);
 
 		this.node.className = "boards";
 		this.titleNode.id = 'trello-title-board';
@@ -39,6 +33,12 @@
 
 		this.id = this.getNextId().split("_")[1];
 		this.node.id = 'board_' + this.id;
+
+		this.boardBoxNode = test(this);
+	}
+
+	function test(obj) {
+		console.log(obj.title);
 	}
 
 	Board.prototype.render = function () {
@@ -56,6 +56,7 @@
 	}
 
 	Board.prototype.registerCard = function (card, index) {
+		//TODO: how to fix this index
 		this.cards[card.id] = {
 			card: card,
 			list: card.list,
@@ -70,7 +71,10 @@
 	}
 
 	Board.prototype.unregisterCard = function (card) {
-		delete this.cards[card.id]
+		var listToDeleteFrom = card.list.cards;
+		var index = listToDeleteFrom.indexOf(card);
+		console.log("card to delete", index);
+		listToDeleteFrom.splice(index, 1);
 	}
 
 	Board.prototype.unregisterList = function (index, listToDel, currBoard) {
@@ -91,17 +95,8 @@
 	}
 
 
-	document.getElementById('card-edit-close').onclick = cardEdit.close
+	document.getElementById('card-edit-close').onclick = cardEdit.close;
 
-	document.getElementById('card-edit-submit').onclick = cardEdit.submit
+	//document.getElementById('card-edit-submit').onclick = cardEdit.submit
 
-	document.getElementById('card-edit-delete').onclick = cardDeleteTrello.delete
-
-	cardEdit.windowOverlay.onclick = cardEdit.close
-
-	//if you click on escape then also the edit window will get closed
-	window.onkeydown = function (evt) {
-		if (evt.keyCode === 27) {
-			cardEdit.close()
-		}
-	}
+	//document.getElementById('card-edit-delete').onclick = cardDeleteTrello.delete;

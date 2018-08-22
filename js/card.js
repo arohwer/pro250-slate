@@ -27,10 +27,9 @@ function isEmpty(obj) {
 function Card(list, title, description, dueDate) {
 	var nextId = 0;
 	console.log("LENGTH", list.board.lists.length);
-	console.log("is empty", isEmpty(list.board.cards));
+	// console.log("is empty", isEmpty(list.board.cards));
 
-	if (isEmpty(list.board.cards)) {
-		console.log("only one list");
+	// if (isEmpty(list.board.cards)) {
 		if (list.cards != undefined) {
 			var lastIndex = list.cards.length - 1;
 			nextId = list.cards[lastIndex].id;
@@ -38,9 +37,9 @@ function Card(list, title, description, dueDate) {
 		else {
 			nextId = 0;
 		}
-	} else {
-		nextId = 0;
-	}
+	// } else {
+	// 	nextId = 0;
+	// }
 
 	this.list = list;
 	this.title = title;

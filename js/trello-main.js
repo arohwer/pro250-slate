@@ -81,19 +81,18 @@ function displayBoard() {
 	var deleteCard = document.getElementById("card-edit-delete");
 	deleteCard.onclick = function (evt) {
 		console.log("in delete click", currentBoard);
-		//var currentBoard;
-		var index = currentBoard.cards[cardEdit.card.id].index;
 
+		//remove from list
 		currentBoard.unregisterCard(cardEdit.card);
-		currentBoard.reregisterSubsequent(cardEdit.card.list, index + 1, -1);
 
+		//remove from dom
 		cardEdit.card.list.cardsNode.removeChild(cardEdit.card.node);
-		cardEdit.card.list.cards.splice(index, 1);
 
 		var cardModal = document.getElementById("card-edit");
 		cardModal.style.display = "none";
 		cardEdit.card = undefined;
-		console.log("updated cards", currentBoard.cards);
+
+		console.log("updated cards", currentBoard);
 	}
 	var saveCard = document.getElementById("card-edit-submit");
 	saveCard.onclick = function () {

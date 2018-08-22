@@ -77,7 +77,7 @@ function List(board, title, index, dummyList) {
 		this.titleNode.draggable = true;
 
 		this.cards = [dummyCard];
-		board.registerCard(this.cards[0], 0);
+		//board.registerCard(this.cards[0], 0);
 
 		// new card form
 		this.titleFormNode = buildCardTitleForm();
