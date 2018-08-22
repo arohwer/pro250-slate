@@ -30,14 +30,14 @@ saveBoard.onclick = function () {
 		selectedBoard.title = editTitleText.value;
 	}
 	editModal.style.display = 'none';
-	console.log("NEW B: ", boards);
+	// console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
 deleteBoard.onclick = function () {
 	dashboard.unregisterBoard(selectedBoard);
 	editModal.style.display = 'none';
-	console.log("NEW B: ", boards);
+	// console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
@@ -110,6 +110,30 @@ function displayDash(boards) {
 		}
 	}
 
+	document.getElementById('c-blue').onclick = function(evt){
+		var id = selectedBoard.id-1;
+		boards[id].node.classList.add('c-blue');	
+		console.log(boards[id].node);
+	}
+
+	document.getElementById('c-pink').onclick = function(evt){
+		var id = selectedBoard.id-1;
+		boards[id].node.classList.add('c-pink');
+		console.log(boards[id].node);
+	}
+
+	document.getElementById('c-green').onclick = function(evt){
+		var id = selectedBoard.id-1;
+		boards[id].node.classList.add('c-green');
+		console.log(boards[id].node);
+	}
+
+	document.getElementById('c-orange').onclick = function(evt){
+		var id = selectedBoard.id-1;
+		boards[id].node.classList.add('c-orange');
+		console.log(boards[id].node);
+	}
+
 	document.getElementById('create').onclick = function (evt) {
 		addNewBoard();
 	};
@@ -126,6 +150,13 @@ function displayDash(boards) {
 	document.getElementById("dashboardLink").onclick = function (evt) {
 		displayDash(boards);
 	};
+
+
+
+}
+
+function setBoardColor(board){
+	// board.style.backgroundColor = "red";
 }
 
 displayDash(boards);

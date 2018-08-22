@@ -130,7 +130,7 @@ textarea {
 }
 
 .red-bg {
-  background-color: #D34A4C;
+  background: #D34A4C;
 }
 
 .darkblue-text {
@@ -804,3 +804,34 @@ input[type="date"], focus {
   max-height: 50px;
   font-family: 'Lato', sans-serif;  
 }
+
+.color-box{
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: center;
+}
+.c-box{
+  width:20px;
+  height:20px;
+  margin:10px 5px;
+  border-radius:5px;
+  cursor:pointer;
+  transition:0.2s ease-in-out;
+}
+
+.c-box:hover{
+  border-radius:50%;
+}
+
+/* .c-box-picked{
+  border-radius:50%;
+  border:1px solid white;
+} */
+
+
+
+.c-blue, #c-blue{background-color: #3CAFF0 !important;}
+.c-pink, #c-pink{background-color:#F06291 !important;}
+.c-green, #c-green{background-color: #8BC34A !important;}
+.c-orange, #c-orange{background-color: #F8971C !important;}
