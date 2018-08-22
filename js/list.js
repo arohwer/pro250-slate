@@ -79,7 +79,7 @@ function List(board, title, index, dummyList) {
 		this.cards = [dummyCard];
 		board.registerCard(this.cards[0], 0);
 
-		// new card title form
+		// new card form
 		this.titleFormNode = buildCardTitleForm();
 
 		for (var i = 0; i < this.cards.length; ++i) {
@@ -87,7 +87,10 @@ function List(board, title, index, dummyList) {
 		}
 		
 		//TODO: fix passing wrong list to add cards
-		dummyCard.titleNode.onclick = addCardTrello(this);
+		dummyCard.titleNode.onclick = function(evt) {
+			var obj = this;
+			addCardTrello(obj);
+		}
 
 		this.node.appendChild(this.cardsNode);
 		dummyCard.node.appendChild(this.titleFormNode);
