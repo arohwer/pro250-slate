@@ -9,19 +9,23 @@ var cardTitle = document.getElementById("card-edit-title");
 var cardDate = document.getElementById("card-edit-date");
 var cardDesc = document.getElementById("card-edit-desc");
 
-function addCardTrello(list) {
-	cardsList = list;
-	console.log("LIST TO ADD TO", cardsList);
-	return function () {
-		console.log("card clicked", this);
-		console.log("card's list", list);
-
+function addCardTrello(obj) {
+	var p1 = obj.parentNode;
+	var p2 = p1.parentNode;
+	var p3 = p2.parentNode;
+	console.log(p3.id);
+	console.log("curr board", currentBoard);
+	for (let i = 0; i < currentBoard.lists.length; i++) {
+		if (p3.id == currentBoard.lists[i].node.id) {
+			console.log(currentBoard.lists[i]);
+			cardsList = currentBoard.lists[i];
+		}
+	}
 		cardTitle.value = '';
 		cardDate.value = '';
 		cardDesc.value = '';
 		var cardModal = document.getElementById("card-edit");
 		cardModal.style.display = "block";
-	}
 }
 
 function editCard(card) {
