@@ -17,7 +17,6 @@
 		this.node = document.createElement('div');
 		this.titleNode = document.createElement('div');
 		this.listsNode = document.createElement('div');
-
 		this.node.className = "boards";
 		this.titleNode.id = 'trello-title-board';
 		this.listsNode.id = 'trello-canvas-board';
