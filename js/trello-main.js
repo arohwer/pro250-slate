@@ -30,19 +30,19 @@ saveBoard.onclick = function () {
 		selectedBoard.title = editTitleText.value;
 	}
 	editModal.style.display = 'none';
-	// console.log("NEW B: ", boards);
+	//console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
 deleteBoard.onclick = function () {
 	dashboard.unregisterBoard(selectedBoard);
 	editModal.style.display = 'none';
-	// console.log("NEW B: ", boards);
+	//console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
 function addNewBoard() {
-	console.log("TITLE: ", boardTitleText.value);
+	//console.log("TITLE: ", boardTitleText.value);
 	if (boardTitleText.value != null && boardTitleText.value != "") {
 		var newBoard = new Board(boardTitleText.value, boards);
 		newBoard.title = boardTitleText.value;
@@ -51,7 +51,7 @@ function addNewBoard() {
 	}
 	modal.style.display = 'none';
 	boardTitleText.value = '';
-	console.log(addBoardBtn);
+	//console.log(addBoardBtn);
 }
 
 function displayBoard() {
@@ -60,9 +60,9 @@ function displayBoard() {
 	for (let i = 0; i < dash.boards.length; i++) {
 		//get the board from boards that was clicked given the nodeid
 		if (boards[i].id == boardId[1]) {
-			console.log("board before render", boards[i]);
+			//console.log("board before render", boards[i]);
 			boards[i].render(boards[i]);
-			console.log("board after render", boards[i]);
+			console.log("updated board", boards[i]);
 			document.getElementById('container').innerHTML = '';
 			document.getElementById('container').appendChild(boards[i].node);
 			currentBoard = boards[i];
@@ -78,6 +78,27 @@ function displayBoard() {
 	document.getElementById("dashboardIcon").onclick = function (evt) {
 		displayDash(boards);
 	};
+	var deleteCard = document.getElementById("card-edit-delete");
+	deleteCard.onclick = function (evt) {
+		console.log("in delete click", currentBoard);
+		//var currentBoard;
+		var index = currentBoard.cards[cardEdit.card.id].index;
+
+		currentBoard.unregisterCard(cardEdit.card);
+		currentBoard.reregisterSubsequent(cardEdit.card.list, index + 1, -1);
+
+		cardEdit.card.list.cardsNode.removeChild(cardEdit.card.node);
+		cardEdit.card.list.cards.splice(index, 1);
+
+		var cardModal = document.getElementById("card-edit");
+		cardModal.style.display = "none";
+		cardEdit.card = undefined;
+		console.log("updated cards", currentBoard.cards);
+	}
+	var saveCard = document.getElementById("card-edit-submit");
+	saveCard.onclick = function () {
+		addCardSubmit();
+	}
 }
 
 function displayDash(boards) {
@@ -97,7 +118,7 @@ function displayDash(boards) {
 
 	addBoardBtn = document.getElementById('addBoardBtn');
 	addBoardBtn.onclick = function () {
-		console.log("ADD CLICKED");
+		//	console.log("ADD CLICKED");
 		modal.style.display = "block";
 	}
 
@@ -144,7 +165,7 @@ function displayDash(boards) {
 	document.getElementById("chatLink").style.display = "none";
 	document.getElementById("dashboardLink").style.display = "block";
 	document.getElementById("addBoardLink").style.display = "block";
-	document.getElementById("logo").onclick = function (evt) {
+	document.getElementById("logo-span").onclick = function (evt) {
 		displayDash(boards);
 	};
 	document.getElementById("dashboardLink").onclick = function (evt) {

@@ -1,7 +1,6 @@
-var dragTracker =
-{
-	id: undefined
-	, list: undefined
+var dragTracker = {
+	id: undefined,
+	list: undefined
 }
 
 //this function will build the card node
@@ -16,19 +15,52 @@ function buildCardNode() {
 /*
  This function is constructor function for card
  */
-function Card(list, title, description, dueDate) {
-	this.id = "card" + list.board.getNextId()
-	console.log("CARD ID", this.id);
-	this.list = list
-	this.title = title
-	this.description = description
-	this.due = dueDate
-	this.node = buildCardNode()
-	this.titleNode = this.node.getElementsByClassName('card-title')[0]
 
-	this.node.classList.add('card')
-	this.node.setAttribute('card-id', this.id)
-	this.titleNode.appendChild(document.createTextNode(this.title))
+function isEmpty(obj) {
+	if (Object.keys(obj).length === 0 && obj.constructor === Object) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function Card(list, title, description, dueDate) {
+	var nextId = 0;
+	console.log("LENGTH", list.board.lists.length);
+	console.log("is empty", isEmpty(list.board.cards));
+
+	if (isEmpty(list.board.cards)) {
+		console.log("only one list");
+		if (list.cards != undefined) {
+			var lastIndex = list.cards.length - 1;
+			nextId = list.cards[lastIndex].id;
+		}
+		else {
+			nextId = 0;
+		}
+	} else {
+		nextId = 0;
+	}
+
+	this.list = list;
+	this.title = title;
+	this.description = description;
+	this.due = dueDate;
+	this.node = buildCardNode();
+	this.titleNode = this.node.getElementsByClassName('card-title')[0];
+
+	this.getNextId = function () {
+		var id = parseInt(nextId, 10);
+		return '_' + (id += 1).toString();
+	}
+
+	this.id = this.getNextId().split("_")[1];
+	this.node.id = 'card_' + this.id;
+	console.log("CARD ID", this.id);
+
+	this.node.classList.add('card');
+	this.node.setAttribute('card-id', this.id);
+	this.titleNode.appendChild(document.createTextNode(this.title));
 
 	/*
 	 These four function will work on drag and drop of the card on another list
@@ -48,10 +80,11 @@ function Card(list, title, description, dueDate) {
 
 	this.node.ondrop = (function (board) {
 		return function (evt) {
-			var id = dragTracker.id
-				, targetId = this.getAttribute('card-id') // 'this' is target of drop
-				, source = board.cards[id]
-				, target = board.cards[targetId]
+			var id = dragTracker.id,
+				targetId = this.getAttribute('card-id') // 'this' is target of drop
+				,
+				source = board.cards[id],
+				target = board.cards[targetId]
 
 			if (id === targetId) {
 				return
@@ -80,10 +113,8 @@ function Card(list, title, description, dueDate) {
 	// this function will be called once you click on the text to edit
 	this.node.onclick = (function (card) {
 		return function () {
-			cardEdit.card = card
-			cardEdit.titleNode.value = card.title;
-			//add date and desc here
-			cardEdit.show()
+			cardEdit.card = card;
+			editCard(card);
 		}
 	}(this))
 }

@@ -222,6 +222,7 @@ textarea {
   font-size: 2.5em;
   max-height: max-content;
   user-select: none;
+  cursor: pointer;
 }
 
 #dashboardLink {
@@ -248,6 +249,7 @@ textarea {
   margin-top: 5%;
   margin: 20px;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #board {
@@ -284,7 +286,8 @@ textarea {
   -webkit-flex: 0 0 270px;
   -ms-flex: 0 0 270px;
   flex: 0 0 270px;
-  margin: 0 5px;
+  /* margin: 0 5px; */
+  margin: 20px;
   max-height: 100%;
   position: relative;
   width: 270px;
@@ -517,6 +520,7 @@ input[type="date"], focus {
   flex-direction: row;
   margin-bottom: 10px;
   padding-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .homeContainer{
@@ -739,11 +743,12 @@ input[type="date"], focus {
 
 .no-bg:hover{
   background: rgb(181, 64, 66);
+  cursor: pointer;
 }
 
 .yes-bg:hover{
   background-color: rgb(121, 191, 132);
-
+  cursor: pointer;
 }
 
 .card-textbox{
