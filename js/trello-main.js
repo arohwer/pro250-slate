@@ -101,6 +101,14 @@ function displayBoard() {
 	}
 }
 
+function editBoardMiddleware(i){
+	console.log('i',i)
+	editModal.style.display = "block";
+	editTitleText.value = boards[i].title;
+	selectedBoard = boards[i];
+}
+
+
 function displayDash(boards) {
 	//pass in list of boards
 	dashboard = new Dashboard(boards);
@@ -122,37 +130,40 @@ function displayDash(boards) {
 		modal.style.display = "block";
 	}
 
+
+
 	editBoardBtn = document.getElementsByClassName('editBoardBtn');
-	for (var i = 0; i < editBoardBtn.length; i++) {
-		editBoardBtn[i].onclick = function () {
-			editModal.style.display = "block";
-			editTitleText.value = boards[i - 1].title;
-			selectedBoard = boards[i - 1];
-		}
+	for (let i = 0; i < editBoardBtn.length; i++) {
+		editBoardBtn[i].addEventListener('click', function() {
+			editBoardMiddleware(i)
+		});	
 	}
 
 	document.getElementById('c-blue').onclick = function(evt){
 		var id = selectedBoard.id-1;
-		boards[id].node.classList.add('c-blue');	
-		console.log(boards[id].node);
+		clearColorsList(boards[id].boardBoxNode);
+		boards[id].boardBoxNode.classList.add('c-blue');	
 	}
 
 	document.getElementById('c-pink').onclick = function(evt){
 		var id = selectedBoard.id-1;
-		boards[id].node.classList.add('c-pink');
-		console.log(boards[id].node);
+		console.log("SB: ", selectedBoard);
+		console.log("ID: ", id);
+		console.log("BOARD: ", boards[id]);
+		clearColorsList(boards[id].boardBoxNode);
+		boards[id].boardBoxNode.classList.add('c-pink');		
 	}
 
 	document.getElementById('c-green').onclick = function(evt){
 		var id = selectedBoard.id-1;
-		boards[id].node.classList.add('c-green');
-		console.log(boards[id].node);
+		clearColorsList(boards[id].boardBoxNode);
+		boards[id].boardBoxNode.classList.add('c-green');
 	}
 
 	document.getElementById('c-orange').onclick = function(evt){
 		var id = selectedBoard.id-1;
-		boards[id].node.classList.add('c-orange');
-		console.log(boards[id].node);
+		clearColorsList(boards[id].boardBoxNode);
+		boards[id].boardBoxNode.classList.add('c-orange');
 	}
 
 	document.getElementById('create').onclick = function (evt) {
@@ -173,11 +184,14 @@ function displayDash(boards) {
 	};
 
 
-
+	function clearColorsList(b){
+		var colorList = b.classList;
+		if(colorList.length == 2){
+			colorList.remove(colorList[1]);
+		}
+		console.log(colorList);
+	}
 }
 
-function setBoardColor(board){
-	// board.style.backgroundColor = "red";
-}
 
 displayDash(boards);
