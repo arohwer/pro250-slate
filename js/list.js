@@ -86,7 +86,6 @@ function List(board, title, index, dummyList) {
 			this.cardsNode.appendChild(this.cards[i].node);
 		}
 		
-		//TODO: fix passing wrong list to add cards
 		dummyCard.titleNode.onclick = function(evt) {
 			var obj = this;
 			addCardTrello(obj);

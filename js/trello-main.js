@@ -75,7 +75,7 @@ function displayBoard() {
 		//get the board from boards that was clicked given the nodeid
 		if (boards[i].id == boardId[1]) {
 			boards[i].render(boards[i]);
-			console.log("updated board", boards[i]);
+			//console.log("updated board", boards[i]);
 			document.getElementById('container').innerHTML = '';
 			document.getElementById('container').appendChild(boards[i].node);
 			currentBoard = boards[i];
@@ -93,7 +93,7 @@ function displayBoard() {
 	};
 	var deleteCard = document.getElementById("card-edit-delete");
 	deleteCard.onclick = function (evt) {
-		console.log("in delete click", currentBoard);
+		//console.log("in delete click", currentBoard);
 
 		//remove from list
 		currentBoard.unregisterCard(cardEdit.card);
@@ -105,7 +105,7 @@ function displayBoard() {
 		cardModal.style.display = "none";
 		cardEdit.card = undefined;
 
-		console.log("updated cards", currentBoard);
+		//console.log("updated cards", currentBoard);
 	}
 	var saveCard = document.getElementById("card-edit-submit");
 	saveCard.onclick = function () {
@@ -122,7 +122,7 @@ function editBoardMiddleware(i) {
 
 
 function displayDash(boards) {
-	console.log(boards);
+	//console.log(boards);
 	dashboard = new Dashboard(boards);
 	dashboard.render();
 	document.getElementById('container').innerHTML = '';

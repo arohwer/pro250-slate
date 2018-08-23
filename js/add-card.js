@@ -15,11 +15,11 @@ function addCardTrello(obj) {
 	var p1 = obj.parentNode;
 	var p2 = p1.parentNode;
 	var p3 = p2.parentNode;
-	console.log(p3.id);
-	console.log("curr board", currentBoard);
+	// console.log(p3.id);
+	// console.log("curr board", currentBoard);
 	for (let i = 0; i < currentBoard.lists.length; i++) {
 		if (p3.id == currentBoard.lists[i].node.id) {
-			console.log(currentBoard.lists[i]);
+			//console.log(currentBoard.lists[i]);
 			cardsList = currentBoard.lists[i];
 		}
 	}
@@ -31,8 +31,8 @@ function addCardTrello(obj) {
 }
 
 function editCard(card) {
-	console.log("card's list", card.list);
-	console.log("card to edit", card);
+	// console.log("card's list", card.list);
+	// console.log("card to edit", card);
 
 	cardsList = card.list;
 	cardToEdit = card;
@@ -53,7 +53,7 @@ function addCardSubmit() {
 	var desc = cardDesc.value.trim();
 	var card;
 
-	console.log(title, date, desc);
+	//console.log(title, date, desc);
 	if (!title || !date || !desc) {
 		return
 	}
@@ -72,7 +72,7 @@ function addCardSubmit() {
 		cardsList.cardsNode.insertBefore(card.node, cardsList.cards[cardsList.cards.length - 1].node);
 		cardsList.cards.push(card);
 	}
-	console.log(cardsList.cards);
+	//console.log(cardsList.cards);
 	var cardModal = document.getElementById("card-edit");
 	cardModal.style.display = "none";
 
