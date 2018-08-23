@@ -10,6 +10,8 @@ var cardDate = document.getElementById("card-edit-date");
 var cardDesc = document.getElementById("card-edit-desc");
 
 function addCardTrello(obj) {
+	isEditing = false;
+	
 	var p1 = obj.parentNode;
 	var p2 = p1.parentNode;
 	var p3 = p2.parentNode;
@@ -63,9 +65,10 @@ function addCardSubmit() {
 		cardInArray.date = date;
 		cardInArray.desc = desc;
 		cardToEdit.titleNode.replaceChild(document.createTextNode(title), cardToEdit.titleNode.childNodes[0]);
+		isEditing = false;
 	} else {
 		card = new Card(cardsList, title, desc, date);
-		cardsList.board.registerCard(card, cardsList.cards.length);
+		//cardsList.board.registerCard(card, cardsList.cards.length);
 		cardsList.cardsNode.insertBefore(card.node, cardsList.cards[cardsList.cards.length - 1].node);
 		cardsList.cards.push(card);
 	}

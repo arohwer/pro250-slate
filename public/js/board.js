@@ -12,7 +12,7 @@
 
 		this.title = title;
 		this.lists = [];
-		this.cards = {};
+		//this.cards = {};
 
 		this.node = document.createElement('div');
 		this.titleNode = document.createElement('div');
@@ -32,6 +32,18 @@
 
 		this.id = this.getNextId().split("_")[1];
 		this.node.id = 'board_' + this.id;
+
+		this.boardBoxNode = buildBoardBoxNode(this);
+
+	}
+
+	function buildBoardBoxNode(obj) {
+		var node = document.createElement('div')
+		node.classList.add('boardBox');
+		node.innerHTML =
+			`<i class="fas fa-pencil-alt editBoardBtn" id="${obj.id}"></i>` +
+			`<h6 id="board_${obj.id}" class="boardName boards">${obj.title}</h6>` 
+		return node;
 	}
 
 	Board.prototype.render = function () {
@@ -63,7 +75,10 @@
 	}
 
 	Board.prototype.unregisterCard = function (card) {
-		delete this.cards[card.id]
+		var listToDeleteFrom = card.list.cards;
+		var index = listToDeleteFrom.indexOf(card);
+		console.log("card to delete", index);
+		listToDeleteFrom.splice(index, 1);
 	}
 
 	Board.prototype.unregisterList = function (index, listToDel, currBoard) {
@@ -84,17 +99,8 @@
 	}
 
 
-	document.getElementById('card-edit-close').onclick = cardEdit.close
+	document.getElementById('card-edit-close').onclick = cardEdit.close;
 
-	document.getElementById('card-edit-submit').onclick = cardEdit.submit
+	//document.getElementById('card-edit-submit').onclick = cardEdit.submit
 
-	document.getElementById('card-edit-delete').onclick = cardDeleteTrello.delete
-
-	cardEdit.windowOverlay.onclick = cardEdit.close
-
-	//if you click on escape then also the edit window will get closed
-	window.onkeydown = function (evt) {
-		if (evt.keyCode === 27) {
-			cardEdit.close()
-		}
-	}
+	//document.getElementById('card-edit-delete').onclick = cardDeleteTrello.delete;
