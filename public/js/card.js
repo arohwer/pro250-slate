@@ -43,6 +43,7 @@ function Card(list, title, description, dueDate) {
 
 	this.node.classList.add('card');
 	this.node.setAttribute('card-id', this.id);
+	this.node.setAttribute('card-list', this.list.index);
 	this.titleNode.appendChild(document.createTextNode(this.title));
 
 	/*
@@ -50,40 +51,48 @@ function Card(list, title, description, dueDate) {
 	 */
 	this.node.ondragstart = (function (id) {
 		return function (evt) {
-			dragTracker.id = id
-			evt.dataTransfer.effectAllowed = 'move'
+			dragTracker.id = id;
+			console.log("drag start", dragTracker.id);
+			evt.dataTransfer.effectAllowed = 'move';
 		}
 	}(this.id))
 
 	this.node.ondragover = function (evt) {
 		if (dragTracker.id) {
-			evt.preventDefault()
+			console.log(dragTracker.id);
+			evt.preventDefault();
 		}
 	}
 
 	this.node.ondrop = (function (board) {
+		console.log("board", board);
 		return function (evt) {
-			var id = dragTracker.id,
-				targetId = this.getAttribute('card-id') // 'this' is target of drop
-				,
-				source = board.cards[id],
-				target = board.cards[targetId]
+			var id = dragTracker.id;
+			var targetId = this.getAttribute('card-id'); // 'this' is target of drop
+			var targetList = this.getAttribute('card-list');
+			//TODO: fix this to use board.lists[correct index].cards[id];
+			var list = board.lists[targetList];
+			var source = list.cards[id-1];
+			console.log(source);
+			console.log(source.node);
+
+			var target = list.cards[targetId-1];
 
 			if (id === targetId) {
 				return
 			}
 
-			source.list.cardsNode.removeChild(source.card.node)
-			target.list.cardsNode.insertBefore(source.card.node, target.card.node)
+			source.list.cardsNode.removeChild(source.node)
+			target.list.cardsNode.insertBefore(source.node, target.node)
 
-			board.reregisterSubsequent(source.list, source.index + 1, -1)
+			//board.reregisterSubsequent(source.list, source.index + 1, -1)
 			source.list.cards.splice(source.index, 1)
 
-			board.reregisterSubsequent(target.list, target.index + 1, 1)
-			target.list.cards.splice(target.index + 1, 0, source.card)
+			//board.reregisterSubsequent(target.list, target.index + 1, 1)
+			target.list.cards.splice(target.index + 1, 0, source.node)
 
-			source.card.list = target.list
-			board.registerCard(source.card, target.index + 1)
+			source.list = target.list
+			//board.registerCard(source.card, target.index + 1)
 			evt.preventDefault()
 		}
 	}(list.board))

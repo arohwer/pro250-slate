@@ -49,15 +49,15 @@
 	Board.prototype.render = function () {
 		//console.log("LISTS", this.lists);
 		if (this.lists.length === 0) {
-			this.lists.push(new List(this, '+ Add list', 0, true))
+			this.lists.push(new List(this, '+ Add list', 0, true));
 		}
 		for (var i = 0; i < this.lists.length; ++i) {
-			this.listsNode.appendChild(this.lists[i].node)
+			this.listsNode.appendChild(this.lists[i].node);
 		}
-		this.lists[this.lists.length - 1].node.appendChild(this.titleFormNode)
-		this.lists[this.lists.length - 1].titleNode.onclick = addListTrello(this)
-		this.node.appendChild(this.titleNode)
-		this.node.appendChild(this.listsNode)
+		this.lists[this.lists.length - 1].node.appendChild(this.titleFormNode);
+		this.lists[this.lists.length - 1].titleNode.onclick = addListTrello(this);
+		this.node.appendChild(this.titleNode);
+		this.node.appendChild(this.listsNode);
 	}
 
 	Board.prototype.registerCard = function (card, index) {
