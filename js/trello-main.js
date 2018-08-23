@@ -28,6 +28,7 @@ close.onclick = function () {
 saveBoard.onclick = function () {
 	if (editTitleText.value != null && editTitleText.value != "") {
 		selectedBoard.title = editTitleText.value;
+		selectedBoard.boardBoxNode = buildBoardBoxNode(selectedBoard);
 	}
 	editModal.style.display = 'none';
 	//console.log("NEW B: ", boards);

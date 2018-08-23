@@ -61,7 +61,6 @@
 	}
 
 	Board.prototype.registerCard = function (card, index) {
-		//TODO: how to fix this index
 		this.cards[card.id] = {
 			card: card,
 			list: card.list,
