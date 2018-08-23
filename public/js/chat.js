@@ -18,12 +18,18 @@ function setPage() {
         var today = new Date();
         var hour = today.getHours();
         var minutes = today.getMinutes();
+        var min = "";
+        if(minutes < 10){
+            min = "0" + minutes.toString();
+        } else {
+            min = minutes.toString();
+        }
         var end = ' AM';
         if(hour > 12){
             hour = hour - 12;
             end = ' PM';
         }
-        var full = hour.toString() + ":" + minutes.toString() + end;
+        var full = hour.toString() + ":" + min + end;
         if(message.value != '' && message.value != null){
             socket.emit('chat', {
                 message: message.value,
@@ -57,6 +63,7 @@ function setPage() {
     });
 
     socket.on('send', function(data){
+        
         showNotification(data.username, data.message);
     });
 
@@ -91,12 +98,14 @@ $(document).mouseup(function (e) {
     $(document).unbind('mousemove');
 });
 
-$('#chat-window').height($(window).height() - ($('#message').outerHeight() + $('#send').outerHeight()) - 82);
+$('#chat-window').height($(window).height() - ($('#message').outerHeight() + $('#send').outerHeight()) - 83);
 $('#left-div').width($(window).width() - $('#chat-container').width());  
+$('#split-bar').height($(window).height() - 82);
 
 
 $(window).resize(function() {
-    $('#chat-window').height($(window).height() - ($('#message').outerHeight() + $('#send').outerHeight()) - 82);
+    $('#chat-window').height($(window).height() - ($('#message').outerHeight() + $('#send').outerHeight()) - 83);
+    $('#split-bar').height($(window).height() - 82);
     $('#left-div').width($(window).width() - $('#chat-container').width());  
 })
 
@@ -121,6 +130,7 @@ function toggleChat(){
 }
 
 function showNotification(username, message){
+    scrollToBottom();
     Push.create(username, {
       body: message,
       icon: "logo-icon.png",
@@ -132,3 +142,10 @@ function showNotification(username, message){
     });
   }
 
+function getMessages(letter){
+    var objDiv = $("#chat-window");
+    objDiv.scrollTop(objDiv.prop('scrollHeight'));
+}
+$(function() {
+    getMessages();
+});
