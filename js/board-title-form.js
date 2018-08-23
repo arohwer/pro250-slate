@@ -11,11 +11,9 @@ function buildDashboardContainer(boards) {
         '<i class="fas fa-plus-circle" id="editBoardBtn"></i>' +
         '</div>'
     for (board in boards) {
-        node.innerHTML +=
-            `<div class="boardBox" id="${board}">` +
-            `<i class="fas fa-pencil-alt editBoardBtn" id="${board}"></i>` +
-            `<h6 id="board_${boards[board].id}" class="boardName boards">${boards[board].title}</h6>`
-        '</div>'
+        node.appendChild(boards[board].boardBoxNode)
+        // +`</div>`;
+        // console.log(boards[board].boardBoxNode);
     }
     return node;
 }

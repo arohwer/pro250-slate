@@ -7,7 +7,7 @@
 	}
 
 	Dashboard.prototype.render = function () {
-		console.log(this.boards);
+		// console.log(this.boards);
 		this.node.appendChild(this.dashGrid);
 	}
 

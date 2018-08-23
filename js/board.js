@@ -33,11 +33,17 @@
 		this.id = this.getNextId().split("_")[1];
 		this.node.id = 'board_' + this.id;
 
-		this.boardBoxNode = test(this);
+		this.boardBoxNode = buildBoardBoxNode(this);
+
 	}
 
-	function test(obj) {
-		console.log(obj.title);
+	function buildBoardBoxNode(obj) {
+		var node = document.createElement('div')
+		node.classList.add('boardBox');
+		node.innerHTML =
+			`<i class="fas fa-pencil-alt editBoardBtn" id="${obj.id}"></i>` +
+			`<h6 id="board_${obj.id}" class="boardName boards">${obj.title}</h6>` 
+		return node;
 	}
 
 	Board.prototype.render = function () {
