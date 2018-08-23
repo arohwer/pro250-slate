@@ -217,6 +217,14 @@ textarea {
   color: #fff;
 }
 
+ul li a i {
+  color: #D2D7DF;
+}
+
+ul li a i:hover {
+  color: #fff;
+}
+
 .logo-span {
   font-family: 'Damion', cursive;
   font-size: 2.5em;
@@ -883,7 +891,7 @@ label{
   padding: 10px 20px;
 }
 
-input{
+.message-input{
   padding: 10px 20px;
   box-sizing: border-box;
   background: #eee;
@@ -933,7 +941,7 @@ input{
 }
 
 #split-bar {
-  background-color:#2D3647;
+  background-color:#D2D7DF;
   height:100vh;
   float: right;
   width: 4px;
@@ -944,7 +952,9 @@ input{
   width: 90%;
 }
 
-.chat-container {
+#chat-container {
+  right: 0;
+  position: absolute;
   display: block;
 }
 
@@ -979,4 +989,10 @@ input{
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+#main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
