@@ -1,6 +1,7 @@
 var dragTracker = {
 	id: undefined,
-	list: undefined
+	list: undefined,
+	card: undefined
 }
 
 //this function will build the card node
@@ -49,40 +50,50 @@ function Card(list, title, description, dueDate) {
 	/*
 	 These four function will work on drag and drop of the card on another list
 	 */
-	this.node.ondragstart = (function (id) {
+
+	 // this = the card we're dragging
+	 // didnt track dragtracker.list
+	 //was passing in only this.id, but we added this.list
+
+	 //SOLUTION
+	 //passing in this returned the entire card being dragged <- SOURCE
+	this.node.ondragstart = (function (card) {
 		return function (evt) {
-			dragTracker.id = id;
-			console.log("drag start", dragTracker.id);
+			console.log('this on drag', this)
+			dragTracker.id = card.id;
+			dragTracker.list = card.list.index
+			dragTracker.card = card
+			console.log("start: ", dragTracker.id);
 			evt.dataTransfer.effectAllowed = 'move';
 		}
-	}(this.id))
+	}(this))
 
 	this.node.ondragover = function (evt) {
 		if (dragTracker.id) {
-			console.log(dragTracker.id);
+			// console.log("over: ", dragTracker.id);
 			evt.preventDefault();
 		}
 	}
 
-	this.node.ondrop = (function (board) {
-		console.log("board", board);
+	/**
+	 * -this refers to the card you are dropping it on aka TARGET
+	 * -to drag cards around, it needs to be dropped on another card
+	 * -then this
+	 * -source list and target list were === trying to remove itself
+	 * - checking if ids were ==, fine for within 1 list, but in other boards cards can have the same id
+	 * this == the html element of card and just getting indexes
+	 */
+
+	 //SOLUTION: PASS IN THET TARGET CARD AS A WHOLE
+	this.node.ondrop = (function (targetCard, board) {
 		return function (evt) {
-			var id = dragTracker.id;
-			var targetId = this.getAttribute('card-id'); // 'this' is target of drop
-			var targetList = this.getAttribute('card-list');
+			console.log('target card', targetCard)
+			var target = targetCard
 
-			//TODO: fix this to use board.lists[correct index].cards[id];
-			var list = board.lists[targetList];
-			var source = list.cards[id-1];
-			console.log(source);
-			console.log(source.node);
+			var source = dragTracker.card
+			console.log("SOURCE: ", source);
 
-			var target = list.cards[targetId-1];
-			//var target = board.lists[list.index];
-
-			if (id === targetId) {
-				return
-			}
+			console.log('target', target)
 
 			source.list.cardsNode.removeChild(source.node)
 			target.list.cardsNode.insertBefore(source.node, target.node)
@@ -97,7 +108,7 @@ function Card(list, title, description, dueDate) {
 			//board.registerCard(source.card, target.index + 1)
 			evt.preventDefault()
 		}
-	}(list.board))
+	}(this, list.board))
 
 	this.node.ondragend = function () {
 		dragTracker.id = undefined
