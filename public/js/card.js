@@ -40,7 +40,6 @@ function Card(list, title, description, dueDate) {
 
 	this.id = this.getNextId().split("_")[1];
 	this.node.id = 'card_' + this.id;
-	//console.log("CARD ID", this.id);
 
 	this.node.classList.add('card');
 	this.node.setAttribute('card-id', this.id);
@@ -59,18 +58,17 @@ function Card(list, title, description, dueDate) {
 	 //passing in this returned the entire card being dragged <- SOURCE
 	this.node.ondragstart = (function (card) {
 		return function (evt) {
-			console.log('this on drag', this)
+			//console.log('this on drag', this)
 			dragTracker.id = card.id;
 			dragTracker.list = card.list.index
-			dragTracker.card = card
-			console.log("start: ", dragTracker.id);
+			dragTracker.card = card;
+			//console.log("start: ", dragTracker.id);
 			evt.dataTransfer.effectAllowed = 'move';
 		}
 	}(this))
 
 	this.node.ondragover = function (evt) {
 		if (dragTracker.id) {
-			// console.log("over: ", dragTracker.id);
 			evt.preventDefault();
 		}
 	}
@@ -87,31 +85,30 @@ function Card(list, title, description, dueDate) {
 	 //SOLUTION: PASS IN THET TARGET CARD AS A WHOLE
 	this.node.ondrop = (function (targetCard, board) {
 		return function (evt) {
-			console.log('target card', targetCard)
-			var target = targetCard
+			//console.log('target card', targetCard)
+			var target = targetCard;
 
-			var source = dragTracker.card
-			console.log("SOURCE: ", source);
+			var source = dragTracker.card;
+			//console.log("SOURCE: ", source);
 
-			console.log('target', target)
+			//console.log('target', target)
 
-			source.list.cardsNode.removeChild(source.node)
-			target.list.cardsNode.insertBefore(source.node, target.node)
+			source.list.cardsNode.removeChild(source.node);
+			target.list.cardsNode.insertBefore(source.node, target.node);
 
-			board.reregisterSubsequent(source.list, source.index + 1, -1)
-			source.list.cards.splice(source.index, 1)
+			board.reregisterSubsequent(source.list, source.index + 1, -1);
+			source.list.cards.splice(source.index, 1);
 
-			board.reregisterSubsequent(target.list, target.index + 1, 1)
-			target.list.cards.splice(target.index + 1, 0, source.node)
+			board.reregisterSubsequent(target.list, target.index + 1, 1);
+			target.list.cards.splice(target.index + 1, 0, source.node);
 
-			source.list = target.list
-			//board.registerCard(source.card, target.index + 1)
-			evt.preventDefault()
+			source.list = target.list;
+			evt.preventDefault();
 		}
 	}(this, list.board))
 
 	this.node.ondragend = function () {
-		dragTracker.id = undefined
+		dragTracker.id = undefined;
 	}
 
 
