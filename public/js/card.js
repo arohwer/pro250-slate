@@ -70,6 +70,7 @@ function Card(list, title, description, dueDate) {
 			var id = dragTracker.id;
 			var targetId = this.getAttribute('card-id'); // 'this' is target of drop
 			var targetList = this.getAttribute('card-list');
+
 			//TODO: fix this to use board.lists[correct index].cards[id];
 			var list = board.lists[targetList];
 			var source = list.cards[id-1];
@@ -77,6 +78,7 @@ function Card(list, title, description, dueDate) {
 			console.log(source.node);
 
 			var target = list.cards[targetId-1];
+			//var target = board.lists[list.index];
 
 			if (id === targetId) {
 				return
@@ -85,10 +87,10 @@ function Card(list, title, description, dueDate) {
 			source.list.cardsNode.removeChild(source.node)
 			target.list.cardsNode.insertBefore(source.node, target.node)
 
-			//board.reregisterSubsequent(source.list, source.index + 1, -1)
+			board.reregisterSubsequent(source.list, source.index + 1, -1)
 			source.list.cards.splice(source.index, 1)
 
-			//board.reregisterSubsequent(target.list, target.index + 1, 1)
+			board.reregisterSubsequent(target.list, target.index + 1, 1)
 			target.list.cards.splice(target.index + 1, 0, source.node)
 
 			source.list = target.list

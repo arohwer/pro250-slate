@@ -8,10 +8,11 @@ var cardToEdit;
 var cardTitle = document.getElementById("card-edit-title");
 var cardDate = document.getElementById("card-edit-date");
 var cardDesc = document.getElementById("card-edit-desc");
+var modalTitle = document.getElementById("card-modal-title");
 
 function addCardTrello(obj) {
 	isEditing = false;
-	
+	modalTitle.innerHTML = "Add Card";
 	var p1 = obj.parentNode;
 	var p2 = p1.parentNode;
 	var p3 = p2.parentNode;
@@ -33,7 +34,7 @@ function addCardTrello(obj) {
 function editCard(card) {
 	// console.log("card's list", card.list);
 	// console.log("card to edit", card);
-
+	modalTitle.innerHTML = "Edit Card";
 	cardsList = card.list;
 	cardToEdit = card;
 
