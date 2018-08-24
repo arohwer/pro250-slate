@@ -19,7 +19,7 @@
 	}
 
 	Dashboard.prototype.unregisterBoard = function (board) {
-		console.log("IN UNREGISTER")
+		//console.log("IN UNREGISTER")
 		var index = this.boards.indexOf(board);
 		if (index > -1) {
 			this.boards.splice(index, 1);

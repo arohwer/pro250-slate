@@ -28,22 +28,36 @@ close.onclick = function () {
 saveBoard.onclick = function () {
 	if (editTitleText.value != null && editTitleText.value != "") {
 		selectedBoard.title = editTitleText.value;
+		selectedBoard.titleNode.innerHTML = selectedBoard.title;
+		var colorClass;
+		if (selectedBoard.boardBoxNode.classList.contains("c-blue")) {
+			colorClass = "c-blue";
+		}
+		if (selectedBoard.boardBoxNode.classList.contains("c-pink")) {
+			colorClass = "c-pink";
+		}
+		if (selectedBoard.boardBoxNode.classList.contains("c-orange")) {
+			colorClass = "c-orange";
+		}
+		if (selectedBoard.boardBoxNode.classList.contains("c-green")) {
+			colorClass = "c-green";
+		}
 		selectedBoard.boardBoxNode = buildBoardBoxNode(selectedBoard);
+		if (colorClass != undefined) {
+			selectedBoard.boardBoxNode.classList.add(colorClass);
+		}
 	}
 	editModal.style.display = 'none';
-	//console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
 deleteBoard.onclick = function () {
 	dashboard.unregisterBoard(selectedBoard);
 	editModal.style.display = 'none';
-	//console.log("NEW B: ", boards);
 	displayDash(boards);
 }
 
 function addNewBoard() {
-	//console.log("TITLE: ", boardTitleText.value);
 	if (boardTitleText.value != null && boardTitleText.value != "") {
 		var newBoard = new Board(boardTitleText.value, boards);
 		newBoard.title = boardTitleText.value;
@@ -52,7 +66,6 @@ function addNewBoard() {
 	}
 	modal.style.display = 'none';
 	boardTitleText.value = '';
-	//console.log(addBoardBtn);
 }
 
 function displayBoard() {
@@ -61,9 +74,8 @@ function displayBoard() {
 	for (let i = 0; i < dash.boards.length; i++) {
 		//get the board from boards that was clicked given the nodeid
 		if (boards[i].id == boardId[1]) {
-			//console.log("board before render", boards[i]);
 			boards[i].render(boards[i]);
-			console.log("updated board", boards[i]);
+			//console.log("updated board", boards[i]);
 			document.getElementById('container').innerHTML = '';
 			document.getElementById('container').appendChild(boards[i].node);
 			currentBoard = boards[i];
@@ -81,7 +93,7 @@ function displayBoard() {
 	};
 	var deleteCard = document.getElementById("card-edit-delete");
 	deleteCard.onclick = function (evt) {
-		console.log("in delete click", currentBoard);
+		//console.log("in delete click", currentBoard);
 
 		//remove from list
 		currentBoard.unregisterCard(cardEdit.card);
@@ -93,7 +105,7 @@ function displayBoard() {
 		cardModal.style.display = "none";
 		cardEdit.card = undefined;
 
-		console.log("updated cards", currentBoard);
+		//console.log("updated cards", currentBoard);
 	}
 	var saveCard = document.getElementById("card-edit-submit");
 	saveCard.onclick = function () {
@@ -101,8 +113,8 @@ function displayBoard() {
 	}
 }
 
-function editBoardMiddleware(i){
-	console.log('i',i)
+function editBoardMiddleware(i) {
+	// console.log('i', i)
 	editModal.style.display = "block";
 	editTitleText.value = boards[i].title;
 	selectedBoard = boards[i];
@@ -110,7 +122,7 @@ function editBoardMiddleware(i){
 
 
 function displayDash(boards) {
-	//pass in list of boards
+	//console.log(boards);
 	dashboard = new Dashboard(boards);
 	dashboard.render();
 	document.getElementById('container').innerHTML = '';
@@ -126,7 +138,6 @@ function displayDash(boards) {
 
 	addBoardBtn = document.getElementById('addBoardBtn');
 	addBoardBtn.onclick = function () {
-		//	console.log("ADD CLICKED");
 		modal.style.display = "block";
 	}
 
@@ -134,34 +145,34 @@ function displayDash(boards) {
 
 	editBoardBtn = document.getElementsByClassName('editBoardBtn');
 	for (let i = 0; i < editBoardBtn.length; i++) {
-		editBoardBtn[i].addEventListener('click', function() {
-			editBoardMiddleware(i)
-		});	
+		editBoardBtn[i].addEventListener('click', function () {
+			editBoardMiddleware(i);
+		});
 	}
 
-	document.getElementById('c-blue').onclick = function(evt){
-		var id = selectedBoard.id-1;
+	document.getElementById('c-blue').onclick = function (evt) {
+		var id = selectedBoard.id - 1;
 		clearColorsList(boards[id].boardBoxNode);
-		boards[id].boardBoxNode.classList.add('c-blue');	
+		boards[id].boardBoxNode.classList.add('c-blue');
 	}
 
-	document.getElementById('c-pink').onclick = function(evt){
-		var id = selectedBoard.id-1;
-		console.log("SB: ", selectedBoard);
-		console.log("ID: ", id);
-		console.log("BOARD: ", boards[id]);
+	document.getElementById('c-pink').onclick = function (evt) {
+		var id = selectedBoard.id - 1;
+		// console.log("SB: ", selectedBoard);
+		// console.log("ID: ", id);
+		// console.log("BOARD: ", boards[id]);
 		clearColorsList(boards[id].boardBoxNode);
-		boards[id].boardBoxNode.classList.add('c-pink');		
+		boards[id].boardBoxNode.classList.add('c-pink');
 	}
 
-	document.getElementById('c-green').onclick = function(evt){
-		var id = selectedBoard.id-1;
+	document.getElementById('c-green').onclick = function (evt) {
+		var id = selectedBoard.id - 1;
 		clearColorsList(boards[id].boardBoxNode);
 		boards[id].boardBoxNode.classList.add('c-green');
 	}
 
-	document.getElementById('c-orange').onclick = function(evt){
-		var id = selectedBoard.id-1;
+	document.getElementById('c-orange').onclick = function (evt) {
+		var id = selectedBoard.id - 1;
 		clearColorsList(boards[id].boardBoxNode);
 		boards[id].boardBoxNode.classList.add('c-orange');
 	}
@@ -184,12 +195,12 @@ function displayDash(boards) {
 	};
 
 
-	function clearColorsList(b){
+	function clearColorsList(b) {
 		var colorList = b.classList;
-		if(colorList.length == 2){
+		if (colorList.length == 2) {
 			colorList.remove(colorList[1]);
 		}
-		console.log(colorList);
+	//	console.log(colorList);
 	}
 }
 

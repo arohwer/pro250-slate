@@ -1,24 +1,24 @@
 function List(board, title, index, dummyList) {
 	//console.log("board passed in", board);
 
-	this.board = board
-	this.dummyList = dummyList
-	this.title = title
-	this.index = index
-	this.node = document.createElement('div')
-	this.titleNode = document.createElement('div')
-	this.cardsNode = document.createElement('div')
-	this.iconNode = document.createElement('div')
-	this.listTop = document.createElement('div')
-	this.listTop.classList.add('list-top')
-	this.iconNode.classList.add('list-trash-container')
-	this.node.classList.add('list')
-	this.titleNode.classList.add('list-title')
-	this.cardsNode.classList.add('list-cards')
+	this.board = board;
+	this.dummyList = dummyList;
+	this.title = title;
+	this.index = index;
+	this.node = document.createElement('div');
+	this.titleNode = document.createElement('div');
+	this.cardsNode = document.createElement('div');
+	this.iconNode = document.createElement('div');
+	this.listTop = document.createElement('div');
+	this.listTop.classList.add('list-top');
+	this.iconNode.classList.add('list-trash-container');
+	this.node.classList.add('list');
+	this.titleNode.classList.add('list-title');
+	this.cardsNode.classList.add('list-cards');
 	this.titleNode.id = "trello-list-title-input";
 	this.titleNode.setAttribute('list-index', index);
 	this.titleNode.setAttribute("contenteditable", true);
-	this.titleNode.appendChild(document.createTextNode(this.title))
+	this.titleNode.appendChild(document.createTextNode(this.title));
 	var icon = document.createElement('i');
 	icon.classList.add("far");
 	icon.classList.add("fa-trash-alt");
@@ -86,7 +86,6 @@ function List(board, title, index, dummyList) {
 			this.cardsNode.appendChild(this.cards[i].node);
 		}
 		
-		//TODO: fix passing wrong list to add cards
 		dummyCard.titleNode.onclick = function(evt) {
 			var obj = this;
 			addCardTrello(obj);
@@ -100,14 +99,14 @@ function List(board, title, index, dummyList) {
 
 	// drag-drop handlers
 	this.titleNode.ondragstart = function (evt) {
-		var index = parseInt(evt.target.getAttribute('list-index'), 10)
-		dragTracker.list = currentBoard.lists[index]
-		evt.dataTransfer.effectAllowed = 'move'
+		var index = parseInt(evt.target.getAttribute('list-index'), 10);
+		dragTracker.list = currentBoard.lists[index];
+		evt.dataTransfer.effectAllowed = 'move';
 	}
 
 	this.titleNode.ondragover = function (evt) {
 		if (dragTracker.list) {
-			evt.preventDefault()
+			evt.preventDefault();
 		}
 	}
 
@@ -115,33 +114,33 @@ function List(board, title, index, dummyList) {
 		var sourceIndex = dragTracker.list.index,
 			targetIndex = parseInt(this.getAttribute('list-index'), 10),
 			numLists = board.lists.length,
-			i
+			i;
 
 		if (sourceIndex === targetIndex) {
 			return
 		}
 
-		board.listsNode.removeChild(dragTracker.list.node)
+		board.listsNode.removeChild(dragTracker.list.node);
 		board.listsNode.insertBefore(dragTracker.list.node,
-			board.lists[targetIndex].node)
+			board.lists[targetIndex].node);
 
 		for (i = sourceIndex; i < numLists - 1; ++i) {
-			board.lists[i] = board.lists[i + 1]
-			board.lists[i].titleNode.setAttribute('list-index', i)
-			board.lists[i].index = i
+			board.lists[i] = board.lists[i + 1];
+			board.lists[i].titleNode.setAttribute('list-index', i);
+			board.lists[i].index = i;
 		}
 		for (i = numLists - 1; i > targetIndex; --i) {
-			board.lists[i] = board.lists[i - 1]
-			board.lists[i].titleNode.setAttribute('list-index', i)
-			board.lists[i].index = i
+			board.lists[i] = board.lists[i - 1];
+			board.lists[i].titleNode.setAttribute('list-index', i);
+			board.lists[i].index = i;
 		}
-		board.lists[targetIndex] = dragTracker.list
-		board.lists[targetIndex].titleNode.setAttribute('list-index', targetIndex)
-		board.lists[targetIndex].index = targetIndex
-		evt.preventDefault()
+		board.lists[targetIndex] = dragTracker.list;
+		board.lists[targetIndex].titleNode.setAttribute('list-index', targetIndex);
+		board.lists[targetIndex].index = targetIndex;
+		evt.preventDefault();
 	}
 
 	this.titleNode.ondragend = function () {
-		dragTracker.list = undefined
+		dragTracker.list = undefined;
 	}
 }

@@ -11,13 +11,12 @@ function addListTrello(board) {
 		function addList(evt) {
 			evt.preventDefault();
 			added = true;
-			console.log(added);
+		//	console.log(added);
 		}
 
 		titleInput.addEventListener("input", addList);
 		titleInput.onclick = function (evt) {
 			titleInput.innerHTML = '';
-			titleInput.textContent = '';
 		}
 
 		titleInput.addEventListener("keypress", function (evt) {
@@ -27,7 +26,7 @@ function addListTrello(board) {
 		});
 
 		function focusOut(evt) {
-			console.log('FOCUS OUT', added);
+			//console.log('FOCUS OUT', added);
 			if (added === true) {
 				var title = titleInput.innerHTML.trim(),
 					index = board.lists.length - 1;
@@ -40,10 +39,8 @@ function addListTrello(board) {
 				listIndex = index;
 				titleInput.textContent = '+ Add list';
 				currentList = new List(board, listContent, listIndex, false);
-				//currentList.id = this.id + 1;
 				//adding new list
 				board.lists.splice(listIndex, 0, currentList);
-				//board.lists.push(currentList);
 				board.listsNode.insertBefore(currentList.node, board.lists[listIndex + 1].node);
 				board.lists[listIndex + 1].titleNode.setAttribute('list-index', listIndex + 1);
 				added = false;
@@ -52,7 +49,7 @@ function addListTrello(board) {
 				index = board.lists.length - 1;
 				titleInput.innerHTML = board.lists[index].title;
 			}
-			console.log('FOCUS OUT', added);
+		//	console.log('FOCUS OUT', added);
 		}
 
 		titleInput.addEventListener("focusout", focusOut);

@@ -1,6 +1,7 @@
 var dragTracker = {
 	id: undefined,
-	list: undefined
+	list: undefined,
+	card: undefined
 }
 
 //this function will build the card node
@@ -16,30 +17,14 @@ function buildCardNode() {
  This function is constructor function for card
  */
 
-function isEmpty(obj) {
-	if (Object.keys(obj).length === 0 && obj.constructor === Object) {
-		return false;
-	} else {
-		return true;
-	}
-}
-
 function Card(list, title, description, dueDate) {
 	var nextId = 0;
-	console.log("LENGTH", list.board.lists.length);
-	// console.log("is empty", isEmpty(list.board.cards));
-
-	// if (isEmpty(list.board.cards)) {
-		if (list.cards != undefined) {
-			var lastIndex = list.cards.length - 1;
-			nextId = list.cards[lastIndex].id;
-		}
-		else {
-			nextId = 0;
-		}
-	// } else {
-	// 	nextId = 0;
-	// }
+	if (list.cards != undefined) {
+		var lastIndex = list.cards.length - 1;
+		nextId = list.cards[lastIndex].id;
+	} else {
+		nextId = 0;
+	}
 
 	this.list = list;
 	this.title = title;
@@ -55,54 +40,75 @@ function Card(list, title, description, dueDate) {
 
 	this.id = this.getNextId().split("_")[1];
 	this.node.id = 'card_' + this.id;
-	console.log("CARD ID", this.id);
+	//console.log("CARD ID", this.id);
 
 	this.node.classList.add('card');
 	this.node.setAttribute('card-id', this.id);
+	this.node.setAttribute('card-list', this.list.index);
 	this.titleNode.appendChild(document.createTextNode(this.title));
 
 	/*
 	 These four function will work on drag and drop of the card on another list
 	 */
-	this.node.ondragstart = (function (id) {
+
+	 // this = the card we're dragging
+	 // didnt track dragtracker.list
+	 //was passing in only this.id, but we added this.list
+
+	 //SOLUTION
+	 //passing in this returned the entire card being dragged <- SOURCE
+	this.node.ondragstart = (function (card) {
 		return function (evt) {
-			dragTracker.id = id
-			evt.dataTransfer.effectAllowed = 'move'
+			console.log('this on drag', this)
+			dragTracker.id = card.id;
+			dragTracker.list = card.list.index
+			dragTracker.card = card
+			console.log("start: ", dragTracker.id);
+			evt.dataTransfer.effectAllowed = 'move';
 		}
-	}(this.id))
+	}(this))
 
 	this.node.ondragover = function (evt) {
 		if (dragTracker.id) {
-			evt.preventDefault()
+			// console.log("over: ", dragTracker.id);
+			evt.preventDefault();
 		}
 	}
 
-	this.node.ondrop = (function (board) {
+	/**
+	 * -this refers to the card you are dropping it on aka TARGET
+	 * -to drag cards around, it needs to be dropped on another card
+	 * -then this
+	 * -source list and target list were === trying to remove itself
+	 * - checking if ids were ==, fine for within 1 list, but in other boards cards can have the same id
+	 * this == the html element of card and just getting indexes
+	 */
+
+	 //SOLUTION: PASS IN THET TARGET CARD AS A WHOLE
+	this.node.ondrop = (function (targetCard, board) {
 		return function (evt) {
-			var id = dragTracker.id,
-				targetId = this.getAttribute('card-id') // 'this' is target of drop
-				,
-				source = board.cards[id],
-				target = board.cards[targetId]
+			console.log('target card', targetCard)
+			var target = targetCard
 
-			if (id === targetId) {
-				return
-			}
+			var source = dragTracker.card
+			console.log("SOURCE: ", source);
 
-			source.list.cardsNode.removeChild(source.card.node)
-			target.list.cardsNode.insertBefore(source.card.node, target.card.node)
+			console.log('target', target)
+
+			source.list.cardsNode.removeChild(source.node)
+			target.list.cardsNode.insertBefore(source.node, target.node)
 
 			board.reregisterSubsequent(source.list, source.index + 1, -1)
 			source.list.cards.splice(source.index, 1)
 
 			board.reregisterSubsequent(target.list, target.index + 1, 1)
-			target.list.cards.splice(target.index + 1, 0, source.card)
+			target.list.cards.splice(target.index + 1, 0, source.node)
 
-			source.card.list = target.list
-			board.registerCard(source.card, target.index + 1)
+			source.list = target.list
+			//board.registerCard(source.card, target.index + 1)
 			evt.preventDefault()
 		}
-	}(list.board))
+	}(this, list.board))
 
 	this.node.ondragend = function () {
 		dragTracker.id = undefined

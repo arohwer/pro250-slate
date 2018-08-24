@@ -11,9 +11,7 @@ function buildDashboardContainer(boards) {
         '<i class="fas fa-plus-circle" id="editBoardBtn"></i>' +
         '</div>'
     for (board in boards) {
-        node.appendChild(boards[board].boardBoxNode)
-        // +`</div>`;
-        // console.log(boards[board].boardBoxNode);
+        node.appendChild(boards[board].boardBoxNode);
     }
     return node;
 }

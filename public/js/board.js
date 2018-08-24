@@ -47,17 +47,17 @@
 	}
 
 	Board.prototype.render = function () {
-		console.log("LISTS", this.lists);
+		//console.log("LISTS", this.lists);
 		if (this.lists.length === 0) {
-			this.lists.push(new List(this, '+ Add list', 0, true))
+			this.lists.push(new List(this, '+ Add list', 0, true));
 		}
 		for (var i = 0; i < this.lists.length; ++i) {
-			this.listsNode.appendChild(this.lists[i].node)
+			this.listsNode.appendChild(this.lists[i].node);
 		}
-		this.lists[this.lists.length - 1].node.appendChild(this.titleFormNode)
-		this.lists[this.lists.length - 1].titleNode.onclick = addListTrello(this)
-		this.node.appendChild(this.titleNode)
-		this.node.appendChild(this.listsNode)
+		this.lists[this.lists.length - 1].node.appendChild(this.titleFormNode);
+		this.lists[this.lists.length - 1].titleNode.onclick = addListTrello(this);
+		this.node.appendChild(this.titleNode);
+		this.node.appendChild(this.listsNode);
 	}
 
 	Board.prototype.registerCard = function (card, index) {
@@ -77,7 +77,7 @@
 	Board.prototype.unregisterCard = function (card) {
 		var listToDeleteFrom = card.list.cards;
 		var index = listToDeleteFrom.indexOf(card);
-		console.log("card to delete", index);
+		//console.log("card to delete", index);
 		listToDeleteFrom.splice(index, 1);
 	}
 
@@ -86,12 +86,8 @@
 		//console.log("current board", currBoard);
 		if (listToDel != undefined) {
 			if (listToDel.title != "+ Add list") {
-				// var int = parseInt(index, 10)
-				//index = index - 1;
 				var index = currBoard.lists.indexOf(listToDel);
-				//console.log("index to delete", index);
 				this.lists.splice(index, 1);
-				//console.log("NEW LISTS", this.lists);
 			}
 		}
 		document.getElementById("trello-canvas-board").innerHTML = '';
@@ -100,7 +96,3 @@
 
 
 	document.getElementById('card-edit-close').onclick = cardEdit.close;
-
-	//document.getElementById('card-edit-submit').onclick = cardEdit.submit
-
-	//document.getElementById('card-edit-delete').onclick = cardDeleteTrello.delete;
