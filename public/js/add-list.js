@@ -17,6 +17,7 @@ function addListTrello(board) {
 		titleInput.addEventListener("input", addList);
 		titleInput.onclick = function (evt) {
 			titleInput.innerHTML = '';
+			titleInput.textContent = '';
 		}
 
 		titleInput.addEventListener("keypress", function (evt) {

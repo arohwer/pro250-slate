@@ -315,6 +315,7 @@ ul li a i:hover {
   font-size: 15px;
   line-height: 18px;
   font-weight: bold;
+  user-select: none;
   /* background: url(../images/trash-alt-regular.svg) no-repeat; */
 }
 
@@ -344,6 +345,10 @@ outline:none;
   overflow-x: hidden;
   margin: 0 4px;
   padding: 0 4px;
+}
+
+.card-title {
+  user-select: none;
 }
 
 .trello-new-card-title-input {
@@ -401,6 +406,7 @@ outline:none;
   font-family: 'Lato', sans-serif;
   width: 300px;
 }
+
 
 #card-edit-close {
   float: right;
@@ -510,6 +516,7 @@ input[type="date"], focus {
   line-height: 30px;
   color: #f6f6f6;
   font-weight: bold;
+  user-select: none;
 }
 
 #trello-canvas-board {
@@ -632,6 +639,7 @@ input[type="date"], focus {
     font-weight:600;
     vertical-align: middle;
     line-height: 180px;
+    user-select: none;
   }
   
   .boardNew{
@@ -765,7 +773,6 @@ input[type="date"], focus {
   max-height: 270px;
   min-height: 20px;
   font-family: 'Lato', sans-serif;
-
 }
 
 #close {
