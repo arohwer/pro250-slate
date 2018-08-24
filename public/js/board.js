@@ -38,7 +38,7 @@
 	}
 
 	function buildBoardBoxNode(obj) {
-		var node = document.createElement('div')
+		var node = document.createElement('div');
 		node.classList.add('boardBox');
 		node.innerHTML =
 			`<i class="fas fa-pencil-alt editBoardBtn" id="${obj.id}"></i>` +
@@ -70,20 +70,17 @@
 
 	Board.prototype.reregisterSubsequent = function (list, index, shift) {
 		for (var i = index; i < list.cards.length; ++i) {
-			this.registerCard(list.cards[i], i + shift)
+			this.registerCard(list.cards[i], i + shift);
 		}
 	}
 
 	Board.prototype.unregisterCard = function (card) {
 		var listToDeleteFrom = card.list.cards;
 		var index = listToDeleteFrom.indexOf(card);
-		//console.log("card to delete", index);
 		listToDeleteFrom.splice(index, 1);
 	}
 
 	Board.prototype.unregisterList = function (index, listToDel, currBoard) {
-		//console.log("list to delete", index);
-		//console.log("current board", currBoard);
 		if (listToDel != undefined) {
 			if (listToDel.title != "+ Add list") {
 				var index = currBoard.lists.indexOf(listToDel);
