@@ -130,10 +130,9 @@ function toggleChat(){
 }
 
 function showNotification(username, message){
-    scrollToBottom();
     Push.create(username, {
       body: message,
-      icon: "logo-icon.png",
+      icon: "images/logo-icon.png",
       timeout: 3000,
       silent: true,
       onClick: function(){
@@ -142,10 +141,3 @@ function showNotification(username, message){
     });
   }
 
-function getMessages(letter){
-    var objDiv = $("#chat-window");
-    objDiv.scrollTop(objDiv.prop('scrollHeight'));
-}
-$(function() {
-    getMessages();
-});
