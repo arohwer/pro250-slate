@@ -2,7 +2,7 @@
 setPage();
 
 function setPage() {
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('https://slate-board.herokuapp.com/');
 
     // Query DOM
     var username = generateUsername();

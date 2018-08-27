@@ -11,7 +11,7 @@ app.get('/', function(request, response){
 });
 
 var server = app.listen(app.get('port'), function() {
-    console.log("Server is up and running on port 3000");
+    console.log("Server is up and running on port", app.get('port'));
 });
  
 // app.use(express.static("public"));
