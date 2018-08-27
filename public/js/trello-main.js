@@ -75,6 +75,7 @@ function displayBoard() {
 		//get the board from boards that was clicked given the nodeid
 		if (boards[i].id == boardId[1]) {
 			boards[i].render(boards[i]);
+			//console.log("updated board", boards[i]);
 			document.getElementById('container').innerHTML = '';
 			document.getElementById('container').appendChild(boards[i].node);
 			currentBoard = boards[i];
@@ -92,6 +93,7 @@ function displayBoard() {
 	};
 	var deleteCard = document.getElementById("card-edit-delete");
 	deleteCard.onclick = function (evt) {
+		//console.log("in delete click", currentBoard);
 
 		//remove from list
 		currentBoard.unregisterCard(cardEdit.card);
@@ -102,6 +104,8 @@ function displayBoard() {
 		var cardModal = document.getElementById("card-edit");
 		cardModal.style.display = "none";
 		cardEdit.card = undefined;
+
+		//console.log("updated cards", currentBoard);
 	}
 	var saveCard = document.getElementById("card-edit-submit");
 	saveCard.onclick = function () {
@@ -110,6 +114,7 @@ function displayBoard() {
 }
 
 function editBoardMiddleware(i) {
+	// console.log('i', i)
 	editModal.style.display = "block";
 	editTitleText.value = boards[i].title;
 	selectedBoard = boards[i];
@@ -117,6 +122,7 @@ function editBoardMiddleware(i) {
 
 
 function displayDash(boards) {
+	//console.log(boards);
 	dashboard = new Dashboard(boards);
 	dashboard.render();
 	document.getElementById('container').innerHTML = '';
@@ -135,6 +141,8 @@ function displayDash(boards) {
 		modal.style.display = "block";
 	}
 
+
+
 	editBoardBtn = document.getElementsByClassName('editBoardBtn');
 	for (let i = 0; i < editBoardBtn.length; i++) {
 		editBoardBtn[i].addEventListener('click', function () {
@@ -150,6 +158,9 @@ function displayDash(boards) {
 
 	document.getElementById('c-pink').onclick = function (evt) {
 		var id = selectedBoard.id - 1;
+		// console.log("SB: ", selectedBoard);
+		// console.log("ID: ", id);
+		// console.log("BOARD: ", boards[id]);
 		clearColorsList(boards[id].boardBoxNode);
 		boards[id].boardBoxNode.classList.add('c-pink');
 	}
@@ -183,11 +194,13 @@ function displayDash(boards) {
 		displayDash(boards);
 	};
 
+
 	function clearColorsList(b) {
 		var colorList = b.classList;
 		if (colorList.length == 2) {
 			colorList.remove(colorList[1]);
 		}
+	//	console.log(colorList);
 	}
 }
 
