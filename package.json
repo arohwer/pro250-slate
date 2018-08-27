@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/arohwer/pro250-slate.git"
   },
-  "engines":{
+  "engines": {
     "node": "8.11.1"
   },
   "author": "",
