@@ -11,14 +11,6 @@
     <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
-
-    <!-- SUPPORT FOR EMAILJS
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("user_h9V3KlthPG93iEf5VPTLe");
-        })();
-    </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
 </head>
@@ -118,6 +110,21 @@
                 </div>
             </div>
         </div>
+
+        <div id="main-container">
+            <div id="container"></div>
+            <div id="chat-container">
+                    <div id="chat">
+                        <div id="chat-window">
+                            <div id="output"></div>
+                            <div id="feedback"></div>
+                        </div>
+                        <input id="message" type="text" class="message-input" placeholder="Enter a message..." />
+                        <button id="send" class="lightblue-bg message-btn">Send</button>
+                    </div>
+                    <div id="split-bar"></div>
+                </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="js/card-edit.js"></script>
@@ -131,7 +138,7 @@
     <script type="text/javascript" src="js/board.js"></script>
     <script type="text/javascript" src="js/dashboard.js"></script>
     <script type="text/javascript" src="js/trello-main.js"></script>
-
+    <script type="text/javascript" src="js/chat.js"></script>
 </body>
 
 </html>
