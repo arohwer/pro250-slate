@@ -7,6 +7,7 @@
 	}
 
 	Dashboard.prototype.render = function () {
+		// console.log(this.boards);
 		this.node.appendChild(this.dashGrid);
 	}
 
@@ -18,6 +19,7 @@
 	}
 
 	Dashboard.prototype.unregisterBoard = function (board) {
+		//console.log("IN UNREGISTER")
 		var index = this.boards.indexOf(board);
 		if (index > -1) {
 			this.boards.splice(index, 1);

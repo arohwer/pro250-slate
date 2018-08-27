@@ -1,0 +1,22 @@
+@media screen and (max-width: 940px) {
+    #logo-slogan{
+        margin-top:0;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .modal-content{
+        width:50%;
+    }
+
+    #card-edit{
+        display: none;
+        position: relative;
+        z-index: 15;
+        border-radius: 3px;
+        background-color: #D2D7DF;
+        width: 100%;
+        top: 81px;
+        position: absolute;
+    }
+}

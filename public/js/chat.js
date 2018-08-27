@@ -122,6 +122,7 @@ chatwindow.style.display = "none";
 // });
 
 function toggleChat(){
+    console.log("hello");
     if(chatwindow.style.display == 'none'){
         chatwindow.style.display = 'block';
     } else {
