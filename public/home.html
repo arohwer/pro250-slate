@@ -19,6 +19,7 @@
             emailjs.init("user_h9V3KlthPG93iEf5VPTLe");
         })();
     </script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
 </head>
@@ -40,7 +41,7 @@
                     </a>
                 </li>
                 <li id="chatLink">
-                    <a href="#">
+                    <a onclick="toggleChat()">
                         <i class="fas fa-comment-alt"></i>
                     </a>
                 </li>
@@ -52,6 +53,21 @@
             </ul>
         </nav>
     </header>
+
+    <div id="main-container">
+        <div id="container"></div>
+        <div id="chat-container">
+                <div id="chat">
+                    <div id="chat-window">
+                        <div id="output"></div>
+                        <div id="feedback"></div>
+                    </div>
+                    <input id="message" type="text" class="message-input" placeholder="Enter a message..." />
+                    <button id="send" class="lightblue-bg message-btn">Send</button>
+                </div>
+                <div id="split-bar"></div>
+            </div>
+    </div>
 
     <div id="container"></div>
 
@@ -120,6 +136,7 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="js/card-delete.js"></script>
     <script type="text/javascript" src="js/card-edit.js"></script>
     <script type="text/javascript" src="js/add-card.js"></script>
     <script type="text/javascript" src="js/list-title-form.js"></script>
@@ -128,9 +145,12 @@
     <script type="text/javascript" src="js/list.js"></script>
     <script type="text/javascript" src="js/add-list.js"></script>
     <script type="text/javascript" src="js/board-title-form.js"></script>
+    <script type="text/javascript" src="js/board-delete.js"></script>
+    <script type="text/javascript" src="js/board-edit.js"></script>
     <script type="text/javascript" src="js/board.js"></script>
     <script type="text/javascript" src="js/dashboard.js"></script>
     <script type="text/javascript" src="js/trello-main.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
 
 </body>
 

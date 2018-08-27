@@ -93,6 +93,10 @@ a:hover {
   text-decoration: none;
 }
 
+textarea {
+  font-family: 'Lato', sans-serif;
+}
+
 /* body,
 button,
 html,
@@ -477,7 +481,7 @@ outline:none;
   border-radius: 0px 0px 3px 0px;
 }
 
-textarea {
+/* textarea {
   resize: none;
   width: 97%;
   border-radius: 5px;
@@ -486,7 +490,7 @@ textarea {
   font-size: 16px;
   border: 0.5px solid #636363;
   margin-top: 20px;
-}
+} */
 
 input[type=text], input[type="date"] {
   display: inline-block;
@@ -1054,3 +1058,5 @@ label{
   display: flex;
   flex-direction: row;
 }
+
+
