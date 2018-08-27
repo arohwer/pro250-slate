@@ -77,13 +77,10 @@
 	Board.prototype.unregisterCard = function (card) {
 		var listToDeleteFrom = card.list.cards;
 		var index = listToDeleteFrom.indexOf(card);
-		//console.log("card to delete", index);
 		listToDeleteFrom.splice(index, 1);
 	}
 
 	Board.prototype.unregisterList = function (index, listToDel, currBoard) {
-		//console.log("list to delete", index);
-		//console.log("current board", currBoard);
 		if (listToDel != undefined) {
 			if (listToDel.title != "+ Add list") {
 				var index = currBoard.lists.indexOf(listToDel);

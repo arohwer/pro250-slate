@@ -34,7 +34,6 @@ function List(board, title, index, dummyList) {
 
 	if (this.board.lists.length > 0) {
 		var nextId = this.index;
-		//console.log("last id", nextId);
 	} else {
 		nextId = 0;
 	}
@@ -49,25 +48,19 @@ function List(board, title, index, dummyList) {
 
 	this.id = this.getNextId().split("_")[1];
 	this.node.id = 'list_' + this.id;
-	//console.log("LIST NODE ID", this.node.id);
 	this.iconNode.id = 'del_' + this.node.id;
 
 	this.iconNode.onclick = function (evt) {
-		//console.log("board for list", board);
-		//console.log("LIST TO DELETE", this);
 		var idToDelete = this.id.split("_")[2];
 		idToDelete = parseInt(idToDelete, 10);
-		//console.log("list id", idToDelete);
 
 		var listDel = undefined;
 		for (let i = 0; i < board.lists.length; i++) {
 			var listID = parseInt(board.lists[i].id, 10);
-			//console.log("ids", listID);
 			if (listID === idToDelete) {
 				listDel = board.lists[i];
 			}
 		}
-		//console.log("LIST TO DELETE", listDel);
 		board.unregisterList(idToDelete, listDel, board);
 	}
 
