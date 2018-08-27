@@ -219,6 +219,8 @@ textarea {
 
 ul li a i {
   color: #D2D7DF;
+  transition: .3s ease-in-out;
+  
 }
 
 ul li a i:hover {
@@ -238,9 +240,11 @@ ul li a i:hover {
   font-size: 1.3em;
   cursor: pointer;
   user-select: none;
+  transition: .3s ease-in-out;
 }
 
 #dashboardIcon {
+  transition: .3s ease-in-out;
   font-size: 2em;
   cursor: pointer;
 }
@@ -450,6 +454,7 @@ outline:none;
 }
 
 #card-edit-delete {
+  transition: .3s ease-in-out;
   width: 300px;
   height: 60px;
   margin: 0px !important;
@@ -463,6 +468,7 @@ outline:none;
 }
 
 #card-edit-submit {
+  transition: .3s ease-in-out;
   width: 300px;
   height: 60px;
   margin: 0px !important;
@@ -661,7 +667,7 @@ input[type="date"], focus {
     padding: 10px;
     box-sizing: border-box;
     border-radius:10px;
-    transition: .2s ease-in-out;
+    transition: .3s ease-in-out;
     position:relative;
   }
 
@@ -671,6 +677,7 @@ input[type="date"], focus {
   }
 
   .fa-pencil-alt{
+    transition: .3s ease-in-out;
     color:white;
     position:absolute;
     right:10px;
@@ -691,7 +698,7 @@ input[type="date"], focus {
     border-radius:5px; */
   }
 
-  .fa-plus-circle{
+  .boardBox .fa-plus-circle{
     color:white;
     font-size:60px;
     opacity:0.7;
@@ -733,6 +740,7 @@ input[type="date"], focus {
   line-height:40px;
   color:white;
   cursor:pointer;
+  transition: .3s ease-in-out;
 }
 
 #boardTitleText, #editTitleText{
@@ -794,6 +802,7 @@ input[type="date"], focus {
 
 
 #card-edit-close {
+  transition: .3s ease-in-out;
   font-size: 20px;
   user-select: none;
 }
@@ -866,6 +875,7 @@ h2{
   max-width: 600px;
   float: right;
   height: 100%;
+  display: block;
 }
 
 
