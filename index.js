@@ -2,12 +2,19 @@ var express = require("express");
 var socket = require("socket.io");
  
 var app = express();
- 
-var server = app.listen(3000, function() {
+app.set('port', (process.env.PORT||5000));
+app.use(express.static(__dirname + '/public'));
+
+
+app.get('/', function(request, response){
+    response.render('index')
+});
+
+var server = app.listen(app.get('port'), function() {
     console.log("Server is up and running on port 3000");
 });
  
-app.use(express.static("public"));
+// app.use(express.static("public"));
  
 var io = socket(server);
  
