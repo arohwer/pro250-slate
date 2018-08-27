@@ -926,6 +926,7 @@ label{
 }
 
 .message-btn{
+  transition: .3s ease-in-out;
   color: #fff;
   font-size: 25px;
   border: 0;
@@ -986,6 +987,8 @@ label{
 
 /* Tooltip text */
 .tooltip .tooltiptext {
+  opacity: 0;
+  transition: .3s ease-in-out;
   visibility: hidden;
   width: 120px;
   background-color: #2D3647;
@@ -1004,6 +1007,7 @@ label{
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
+  opacity: 1;
   visibility: visible;
 }
 
