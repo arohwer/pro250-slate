@@ -769,8 +769,8 @@ input[type="date"], focus {
 .modal-content {
   background-color: #D2D7Df;
   margin: auto;
-  /* padding: 20px; */
-  border: 1px solid #2D3647;
+  padding-top: 20px;
+  /* border: 1px solid #2D3647; */
   width: 30%;
   border-radius:5px;
   text-align:center;
